@@ -1,0 +1,23 @@
+header {
+    background-color: #0a0f0cfa;
+    font-family: Georgia;
+    font-size: 28px;
+    color: white;
+    padding: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 100vh;
+    background-image: url(../img/book/kids/head.jpg);
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+@media (max-width: 567px) {
+    header {
+        font-size: 24px;
+        background-image: url(../img/book/kids/head-mobi.jpg);
+    }
+}

@@ -1,0 +1,26 @@
+.media_bar {
+    width: 25%;
+    padding-top: 170px;
+    margin-left: 50px;
+}
+
+.media_bar {
+    color: #0a0f0c;
+}
+
+.media_bar a {
+    margin-left: 20px;
+    text-decoration: underline;
+    color: rgba(0, 0, 0, 0.70);
+}
+
+@media screen and (max-width: 900px) {
+    .media_bar {
+        width: 100%;
+        text-align: center;
+        margin: 0;
+    }
+    .media_bar a {
+        margin-left: 0px;
+    }
+}

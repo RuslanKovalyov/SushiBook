@@ -1,0 +1,237 @@
+.form-wrap {
+    margin: auto;
+    margin-top: 70px;
+    margin-bottom: 30px;
+    font: 600 22px/26px 'Open Sans', sans-serif;
+    color: #fff;
+    width: 98%;
+    max-width: 525px;
+    min-height: 325px;
+    position: relative;
+    background: url(/static/img/users_register.jpg) no-repeat center;
+    background-size: contain;
+    box-shadow: 0 12px 15px 0 rgba(0, 0, 0, .24), 0 17px 50px 0 rgba(0, 0, 0, .19);
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+.clearfix:after,
+.clearfix:before {
+    content: '';
+    display: table
+}
+
+.clearfix:after {
+    clear: both;
+    display: block
+}
+
+.form-wrap a {
+    color: rgba(255, 255, 255, 0.6);
+    text-decoration: none
+}
+
+.form-wrap a:hover {
+    color: #9dfcc5d5;
+    text-decoration: none;
+}
+
+.form-wrap a:active {
+    color: #028338b6;
+}
+
+.form-wrap a.but {
+    margin: auto;
+    width: 50%;
+    background-color: #3c3;
+    text-align: center;
+    color: #fff;
+    font-size: large;
+    display: block;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+}
+
+.form-wrap a.but:hover {
+    color: #fff;
+    background-color: rgb(51, 117, 204);
+}
+
+.form-wrap .content {
+    width: 100%;
+    min-height: 325px;
+    position: relative;
+    padding: 70px 40px 50px 40px;
+    background: #001812ea;
+}
+
+.form-wrap .content p {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.form-wrap .content .login-form {
+    top: 10px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    min-height: 345px;
+    position: relative;
+}
+
+.form-wrap .login-form .check {
+    display: none;
+}
+
+.form-wrap .content .tab,
+.form-wrap .content label,
+.form-wrap .content .button {
+    text-transform: uppercase;
+}
+
+.form-wrap .content .tab {
+    font-size: 22px;
+    margin-right: 15px;
+    padding-bottom: 5px;
+    margin: 0 15px 10px 0;
+    display: inline-block;
+    border-bottom: 2px solid transparent;
+}
+
+.form-wrap .content .mark {
+    color: #fff;
+    border-color: rgba(255, 255, 255, 0.7);
+    ;
+}
+
+.form-wrap .content {
+    font-size: small;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+ul.errorlist,
+.errors,
+.error {
+    color: red;
+    margin-bottom: 20px;
+}
+
+.form-wrap .login-form .group {
+    margin-bottom: 15px;
+}
+
+.form-wrap .login-form input,
+.form-wrap .login-form .button {
+    margin-bottom: 20px;
+    width: 100%;
+    color: #fff;
+    font-size: large;
+    display: block;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.form-wrap .login-form input[data-type="password"] {
+    /*text-security: circle;*/
+    -webkit-text-security: circle;
+}
+
+.form-wrap .login-form label {
+    color: rgba(255, 255, 255, 0.486);
+    font-size: 12px;
+}
+
+.form-wrap .login-form .button {
+    background: #00666ad6;
+}
+
+.form-wrap .login-form label .icon {
+    width: 15px;
+    height: 15px;
+    border-radius: 2px;
+    position: relative;
+    display: inline-block;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.form-wrap .login-form label .icon:before,
+.form-wrap .login-form label .icon:after {
+    content: '';
+    width: 10px;
+    height: 2px;
+    background: #fff;
+    position: absolute;
+    transition: all .2s ease-in-out 0s;
+}
+
+.form-wrap .login-form label .icon:before {
+    left: 3px;
+    width: 5px;
+    bottom: 6px;
+    transform: scale(0) rotate(0);
+}
+
+.form-wrap .login-form label .icon:after {
+    top: 6px;
+    right: 0;
+    transform: scale(0) rotate(0);
+}
+
+.form-wrap .login-form .check:checked+label {
+    color: #fff;
+}
+
+.form-wrap .login-form .check:checked+label .icon {
+    background: #9dfcc5d5;
+}
+
+.form-wrap .login-form .check:checked+label .icon:before {
+    transform: scale(1) rotate(45deg);
+}
+
+.form-wrap .login-form .check:checked+label .icon:after {
+    transform: scale(1) rotate(-45deg);
+}
+
+.form-wrap .hr {
+    height: 2px;
+    margin: 60px 0 50px 0;
+    background: rgba(255, 255, 255, .2);
+}
+
+.form-wrap .foot-lnk {
+    text-align: center;
+}
+
+.form-wrap h1,
+.form-wrap h2 {
+    line-height: 1.5;
+}
+
+.form-wrap .login-form .country select {
+    width: 70%;
+    margin-bottom: 20px;
+}
+
+.form-wrap .login-form .birth select {
+    width: 33%;
+    margin-bottom: 20px;
+}
+
+@media screen and (max-width: 450px) {
+    .form-wrap .content {
+        padding: 70px 20px 50px 20px;
+    }
+}
+
+@media screen and (max-width: 300px) {
+    .form-wrap .content {
+        padding: 70px 10px 50px 10px;
+    }
+}

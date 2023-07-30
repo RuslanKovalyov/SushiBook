@@ -1,0 +1,66 @@
+.book {
+    width: 75%;
+    float: right;
+    padding: 50px 0 5px 0;
+}
+
+.book .header {
+    width: 100%;
+    height: max-content;
+    margin: 0;
+    padding: 30px 0 5px 0;
+    background: url(../img/backgrounds/bg_book_header.jpg);
+    background-size: cover;
+    background-position: 0% 0%;
+}
+
+.book .header h1 {
+    text-align: center;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
+    margin-inline: 8%;
+}
+
+.book .header img {
+    width: 85%;
+    max-height: 600px;
+    margin: 0 7% 0 8%;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 5px;
+}
+
+.book .middle_part {
+    width: 100%;
+    height: max-content;
+    margin: 0;
+    padding: 5px 7% 5px 8%;
+    background: url(../img/backgrounds/bg_book_middle_part.jpg);
+    background-size: 100% 100%;
+}
+
+.book .footer {
+    width: 100%;
+    min-height: 100px;
+    margin: 0;
+    padding: 5px 7% 60px 8%;
+    background: url(../img/backgrounds/bg_book_footer.jpg);
+    background-size: 100% 100%;
+    background-position: 0% 100%;
+}
+
+.book .text-icon {
+    width: 12px;
+}
+
+@media screen and (max-width: 900px) {
+    .book {
+        padding: 30px 0 5px 0.1%;
+        width: 99.9%;
+    }
+    .book .header {
+        padding-top: 10px;
+    }
+    .book .header img {
+        max-height: 400px;
+    }
+}
