@@ -1,0 +1,13 @@
+<div class="media_bar">
+    <h3>Chapters:<br>
+        {% for section in sections %}
+        <br>{{ section.name }}
+            {% for page in pages %}
+                {%if page.section == section %}
+                    <br><a href="{{ page.get_absolute_url }}"><small>{{ page.title }}</small></a>
+                {% endif %}
+            {% endfor %}
+        <br>
+        {% endfor %}
+    </h3>
+</div>

@@ -1,0 +1,26 @@
+{% if people %}
+    <div class="horizont_feed" id="side_bar_padding" onclick="closeNav()">
+        <div class="feed">
+
+            {% if people.has_previous %}
+                <a class="next_btn" href="?page={{ people.previous_page_number }}">&#8592;</a> 
+            {% endif %} 
+            
+            {% for person in people %}
+                <a class="card" href='{{ person.get_absolute_url }}'> 
+                    <img src="{{ person.avatar.url }}" alt="user image" loading="lazy"/> 
+                    {% if person.first_name %}
+                        <span class="card_title">
+                            {{ person.first_name }} {{ person.last_name | default:'' }}
+                        </span> 
+                    {% endif %}
+                </a>
+            {% endfor %} 
+
+            {% if people.has_next %}
+                <!--<a class="next_btn" href="?page={{ people.next_page_number }}">next&nbsp;&#8594;</a> -->
+            {% endif %}
+            <!--Page {{ people.number }} of {{ people.paginator.num_pages }}-->
+        </div>
+    </div>
+{% endif %}

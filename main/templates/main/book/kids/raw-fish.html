@@ -1,0 +1,52 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/kids.css' %}" type="text/css">
+<title>Sushi & Kids | Sushi Book</title>
+<meta name="description" content="Is it safe for my child to eat sushi? - Omega-3 fatty acids help children's brain and eye development. However, like any seafood, there are some safety considerations for parents to keep in mind.">
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1><small>How Safe is Raw Fish?</small></h1>
+        <img src="{% static 'img/book/kids/raw-fish.jpg' %}" alt="Raw salamon">
+    </div>
+
+    <div class="book_content">
+        <h4 style="color: rgb(0, 22, 1);">Question
+        </h4>
+
+        <h2 style="color: rgb(0, 29, 14);">
+            Is it safe for my child to eat sushi?
+        </h2>
+
+        <h4 style="color: rgb(0, 22, 1);">Answer
+        </h4>
+
+        <p>
+            ​​Sushi continues to gain popularity, so many parents wonder if it is safe for their young children to eat and when they can safely introduce it. Sushi in itself—if it's using lean fish and vegetables and avocado—can be very healthy and can be a great
+            source of omega-3 fatty acids and vitamins. Omega-3 fatty acids help children's brain and eye development. However, like any seafood, there are some safety considerations for parents to keep in mind.
+        </p>
+
+        <h2 style="color: rgb(0, 22, 1);">Sushi Safety Tips for Parents:
+        </h2>
+        <p>
+            <strong>Limit sushi to those low in mercury.</strong> It's best to limit tuna an​d other higher mercury fish like swordfish, sea bass, shark, tilefish and king mackerel to no more than 12 ounces a week. Specifically avoid bluefin, "Bigeye,"
+            and white (albacore) tuna as these have the most mercury. Yellowfin tuna has less mercury; light or skipjack tuna have the least. Other seafood such as salmon and crab contain little to no mercury.
+        </p>
+        <p>
+            <strong>Avoid raw shellfish. </strong> It is considered the most dangerous to eat, because it's most likely to be contaminated and may carry potentially higher risks of food-borne illness.
+        </p>
+        <p>
+            <strong>Consider starting with vegetarian options to ensure that your child enjoys the other
+                ingredients in sushi.</strong> Raw fish and shellfish in sushi may carry bacteria or toxins, but <a href="https://www.cdc.gov/fdoss/annual-reports/index.html">data</a> reported to the Centers for Disease Control and Prevention
+            (CDC) found it rarely causes illness. For example, sushi accounted for 0.3% of all food-borne illnesses in the U.S. between 1998 and 2015. Eating other raw or undercooked animal protein sources—including beef and poultry products—creates a
+            similar if not greater risks for illness. In places, such as Japan, where sushi is a main part of the diet, parents often wait until children are 2 ½ to 3 years old to introduce it, but in some cases, they wait until age 5 or later.
+        </p>
+        <p>
+            <strong>Get the Hepatitis A vaccine.</strong> While rare, eating raw fish puts you and your child at the risk of infections such as Hepatitis A and parasites. Make sure your child has received the Hepatitis A vaccine before he or she tries
+            sushi.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br><br>
+    </div>
+</div>
+<!---->{% endblock %}

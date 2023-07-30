@@ -1,0 +1,21 @@
+{% load static %}
+<footer onclick="closeNav()">
+        <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank"> <img src="{% static 'img/ico/facebook.png' %}"  alt="facebook"></a>
+        <a href="https://www.linkedin.com/shareArticle?url={{ request.build_absolute_uri }}"    target="_blank"> <img src="{% static 'img/ico/linkedin.png' %}"  alt="linkedin"></a>
+        <a href="whatsapp://send?text={{ request.build_absolute_uri }}"                         target="_blank"> <img src="{% static 'img/ico/whatsapp.png' %}"  alt="whatsapp"></a>
+        <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}"         target="_blank"> <img src="{% static 'img/ico/twitter.png' %}"   alt="twitter"></a>
+    <p>
+        <a href="{% url 'book' %}">About</a> 
+            <span class="delimiter">|</span>
+        <a href="{% url 'partners' %}">Partners&nbsp;&&nbsp;Friends</a>
+            <span class="delimiter">|</span>
+        <a href="{% url 'home' %}">sushibook.com&nbsp;©&nbsp;{% now "Y" %}</a>
+        {% comment %} <a href="{% url 'development' %}">Services</a> {% endcomment %}
+        {% comment %} <a href="{% url 'development' %}">Contacts</a> {% endcomment %}
+        {% comment %} <a href="{% url 'home' %}">English</a> {% endcomment %}
+    </p>
+    <p class="credits">
+        Creation & support by
+        <a class="link" href="https://www.linkedin.com/in/ruslan-developer/" target="_blank">@Ruslan&nbsp;K.</a>
+    </p>
+</footer>

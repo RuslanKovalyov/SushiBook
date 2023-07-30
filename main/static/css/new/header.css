@@ -1,0 +1,53 @@
+header {
+    background-color: #0a0f0cfa;
+    padding: 0px;
+    margin: 0px;
+    border: 0px;
+    width: 100%;
+    height: 100vh;
+}
+
+.header_short {
+    background-color: #0a0f0c;
+    height: min-content;
+}
+
+header img {
+    width: 100%;
+    height: 100vh;
+    object-fit: cover;
+    position: absolute;
+}
+
+header .logo {
+    position: sticky;
+    top: 0;
+    padding-top: 70px;
+    padding-left: 20px;
+    padding-bottom: 20px;
+}
+
+.header_short .logo {
+    padding-top: 5px;
+    position: relative;
+    padding-left: 20px;
+}
+
+header a {
+    text-decoration: none;
+    font-family: Georgia;
+    color: white;
+    font-size: 50px;
+    text-shadow: 3px 3px 2px rgb(20, 17, 17), 0 0 70px rgba(31, 8, 25, 0.75);
+}
+
+@media screen and (max-width: 900px) {
+    header .logo {
+        padding-top: 40px;
+        padding-left: 12px;
+    }
+    header a {
+        font-size: 40px;
+        text-shadow: 2.7px 2.7px 2px rgb(20, 17, 17), 0 0 50px rgba(31, 8, 25, 0.5);
+    }
+}

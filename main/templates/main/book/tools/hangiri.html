@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/tools.css' %}" type="text/css">
+<title>Hangiri | Sushi Book</title>
+<meta name="description" content="A Hangiri (or sushi oke) is a traditional Japanese wooden tub that is used in the final steps of preparing sushi rice.">
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1>Hangiri</h1>
+        <img src="{% static 'img/book/tools/hangiri.jpg' %}" alt="Hangiri">
+    </div>
+
+    <div class="book_content">
+        <h2>A Hangiri (or sushi oke) is a traditional Japanese wooden tub that is used in the final steps of preparing sushi rice
+        </h2>
+
+        <p>
+            Its wide flat bottom aids in spreading out the hot rice to help it cool quickly after pouring in the sushi seasoning while simultaneously fanning and mixing the rice with a rice paddle. This helps to give the sushi rice a slightly shiny appearance and
+            speeds up evaporation and absorption so the rice doesn't get mushy. A quality one is normally made of uncoated cypress wood or cedar and is bound by two copper bands.
+        </p>
+
+        <h3>Before using it for the first time
+        </h3>
+        <p>
+            Please remove the wood resin from the sushi oke. Put water into the oke and add approximately 35ml to 55ml of vinegar and stir. (Water that has been used to wash rice is can be used instead of rice vinegar) Once two to three hours have passed, rinse the
+            oke before using. (You can use it without removing the wood resin, however this may cause the rice to have a harsh after-taste during the first use)
+        </p>
+
+        <h3>Using
+        </h3>
+        <p>
+            Fill the hangiri with water and let it sit while your rice cooks or for at least 30 minutes before you plan to use it. Make sure to pour out the all of the water before putting any hot rice in it. It is probably a good idea to turn it over to drain for
+            a few minutes so there won't be so much water in it that the rice can soak it up and get mushy. Since most quality ones are made of untreated cypress, if rice were put in it without first soaking it in water the rice would stick to the wood.
+            The water has a non-stick affect on the wood and also keeps the tub from soaking up too much of the rice vinegar, sugar, and salt mixture.
+        </p>
+
+        <h3>Care of after use
+        </h3>
+        <p>
+            Please rinse it out with hot or cold water, wipe off the moisture and dry the oke. When using detergent please use a neutral kitchen detergent.
+        </p>
+
+        <h3>Other cautionary notes
+        </h3>
+        <p>
+            1 Please do not leave water inside for long periods of time as this may cause mold or corrosion. 2 While drying, there may be a slight leakage of water, however after around 10 minutes have passed since putting water in, the wood will expand and there
+            will no longer be any leakage. 3 Please note that direct sunlight and the wind or hot air of air conditioning and heating equipment will cause the surface to dry rapidly, causing cracks and deformations.
+        </p>
+
+        <h3>If the hoop of sushi oke has come off
+        </h3>
+        <p>
+            Wood expands with high humidity and shrinks when the atmosphere is dry. Therefore, the hoop may loosen with the low level of humidity in winter. If the hoop loosens or comes off, turn it upside down, fit it to the oke, and strike it with a hammer while
+            place a Kamaboko plate on top of the hoop so as to avoid scratching the oke with the hammer. If you re-affix the hoop to the groove and rinse it with water, the hoop will tighten again.
+        </p>
+
+        <h3>If mold forms
+        </h3>
+        <p>
+            Mold spores are constantly floating in the indoor air.This floating spores land on every surface in the room, and it will breed if the following requirements are met: ① the availability of nutrition (including dust), ② temperature (20 to 35 ℃), ③ oxygen,
+            ④ humidity (70% or more). Mold should be removed early and not be allowed to take root; its spread should be prevented. If mold has only just begun growing (only on the surface), you can remove it simply by wiping it off. If the mold has taken
+            root, please use sandpaper and scrape the roots off. If the roots are deep and can’t be removed easily when scraped with sandpaper, you can kill the hyphae of the mold with chlorine bleach after some scrapping.However, please note that discoloration
+            as a result of mold which remains even when killed will cause a large loss of aesthetic appeal.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br><br><br>
+    </div>
+</div>
+<!---->{% endblock %}

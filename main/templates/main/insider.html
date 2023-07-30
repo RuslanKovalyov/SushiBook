@@ -1,0 +1,103 @@
+{% extends "base.html" %}{% load static %}{% block head %}
+    <link rel="stylesheet" href="{% static 'css/insider.css' %}" type="text/css">
+    <title>Sushi Insider</title>
+    <meta name="description" content='Recipes from real sushi restaurants - project partners. Detailed analysis of sushi with complete recipes.'>
+{% endblock head %} 
+{% block content %}
+<div id="card">
+    <div class="search">
+        <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="Search sushi rolls by name.." title="Roll search">
+    </div>
+    {% for el in insider %}
+    <search_for>
+        <div class="responsive">
+            <a style="visibility: hidden;">{{ el.dish_name }}</a>
+            <div class="gallery">
+                <img alt="sushi roll" src="{{ el.picture.url }}">
+                <p class="copyrigth-credit">
+                    {{ el.restaurant }}
+                </p>
+                <div class="desc">
+                    {{ el.dish_name }} <br> <button>read..</button>
+                </div>
+                <div class="more">
+                    <p>
+
+                        <ul class="content">
+                            <span style="float: right; margin-right: 5px; background-color: rgba(151, 168, 0, 0.349); padding-inline: 7px; border-radius: 3px;">{{ el.tags }}</span>
+                            <br>
+                            <b style="font-size: large; padding-left: 0;">{{ el.roll_type }} </b>
+                            <br>
+                            <li style="padding-top: 15px;"><span style="font-weight: bold;">Sprinkles&nbsp;:</span> {{ el.sprinkles }}</li>
+                            <li style="padding-top: 15px;"><span style="font-weight: bold;">Top&nbsp;:</span> {{ el.top }}</li>
+                            <li style="padding-top: 15px;"><span style="font-weight: bold;">Wrapped&nbsp;:</span> {{ el.wrapped }}</li>
+                            <li style="padding-top: 15px;"><span style="font-weight: bold;">Filling&nbsp;:</span> {{ el.filling }}</li>
+                            <li style="padding-top: 15px;"><span style="font-weight: bold;">Description&nbsp;:</span> {{ el.description }}</li>
+
+
+                            <br>
+                            <b style="padding-top: 15px;"><span style="font-weight: bold;">By&nbsp;:</span> {{ el.restaurant }} <br>
+                            
+                                {{ el.country }} - {{ el.city }}
+                            </b>
+                            <br>
+                            <span class="closer">close..</span>
+                        </ul>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+            </search_for>
+            {% endfor%}
+
+            <h2 id="no_elements" style="display: none; color: chocolate;"><big><strong>Not found.</strong></big> </h2>
+        </div>
+
+
+
+<script>
+    // Add active class to the current button (highlight it)
+    var header = document.getElementById("card");
+    var btns = header.getElementsByClassName("responsive");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            //var current = document.getElementsByClassName("active");
+            //current[0].className = current[0].className.replace(" active", "");
+            if (this.className == "active") {
+                this.className = "responsive";
+            } else {
+                this.className = "active";
+            }
+
+        });
+    }
+</script>
+
+<script>
+    function searchFunction() {
+        var input, filter, card, ta, a, i, txtValue, counter;
+        counter = 0;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        card = document.getElementById("card");
+        ta = card.getElementsByTagName("search_for");
+        for (i = 0; i < ta.length; i++) {
+            a = ta[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                ta[i].style.display = "";
+                counter += 1;
+            } else {
+                ta[i].style.display = "none";
+            }
+        }
+        if (counter) {
+            document.getElementById("no_elements").style.display = "none"
+        } else {
+            document.getElementById("no_elements").style.display = ""
+        }
+    }
+</script>
+
+{% endblock %}

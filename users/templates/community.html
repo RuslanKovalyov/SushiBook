@@ -1,0 +1,173 @@
+{% extends "base.html" %}{% load static %}{% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/registration.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/post.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
+<link rel="stylesheet" href="{% static 'css/users_app/create_post.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/new/horizont_feed.css' %}" type="text/css">
+
+
+<!--script for infinite-->
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/waypoints/lib/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/waypoints/lib/shortcuts/infinite.min.js' %}"></script>
+<!---->
+{% endblock head %} {% block auto-scroll %}{% endblock %} 
+{% comment %} {% block navbar_links %} 
+    {% if request.user.is_authenticated %}
+        <li style="float: right;">
+            <a href="{{ user.profile.get_absolute_url }}">{{ user.profile.first_name | default:user.profile }}</a>
+        </li>
+    {% else %}
+        <li style="float: right;">
+            <a href="{% url 'login' %}">Sign in</a>
+        </li>
+    {% endif %} 
+{% endblock navbar_links %}  {% endcomment %}
+
+{% block content %}
+<h3 style="text-align:center;">
+    New Community People
+</h3>
+{% include 'main/people_horizont_feed.html' %}
+<!--CREATE POST-->
+<div>
+    <div onclick=open_url()>
+        <div class="create_post_card_wrap">
+                <div class="small_box_create_post">
+                    {% if request.user.is_authenticated %}
+                        <a href="{{ user.profile.get_absolute_url }}"><img class="avatar" src="{{ user.profile.avatar.url }}" alt="profile picture" /></a>
+                        <span class="text ">Write your post...</span>
+                    {% else %}
+                        <div class="textarea">&emsp;&#128100; &emsp;Write your post...</div>
+                    {% endif %}
+                </div>
+        </div>
+    </div>
+    <script async>
+        function open_url() {
+            location.href = "{% url 'create_post'  %} ";
+        }
+    </script>
+</div>
+<!--Infinite Post List-->
+<div>
+    <div class="infinite-container">
+        {% for post in posts %}
+        <div class="infinite-item">
+            <div class="post_card_wrap">
+                <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+                <div class="content">
+                    <a href="{{ post.author.get_absolute_url }}"><img class="avatar" src="{{ post.author.avatar.url }}" alt="profile picture" /></a>
+
+                    <a class="author" href="{{ post.author.get_absolute_url }}">
+                        {% if post.author.first_name %}
+                        {{ post.author.first_name }}
+                        {{ post.author.last_name | default:'' }}
+                        {% else %}
+                        {{ post.author }}
+                        {% endif %}
+                        <br><span class="position">{{ post.author.current_position | default:'' }}</span>
+                    </a>
+
+                    <hr>
+
+                    <h3 class="title">{{ post.title }}</h3>
+                    <h5 class="story">
+                        {{ post.story }}
+                    </h5>
+                </div>
+
+                {% if post.picture %}<img class="post_picture" src="{{ post.picture.url }}" /> 
+                
+                {% else %}
+                <br><br>               
+                {% endif %}
+                <!--like-demo
+                <div class="content">
+                    
+                    {% if post.postlike_set.all %}
+                    <a onclick=like(this) href="{{ post.get_absolute_url }}/like/ ">&#128420;</a><small><small>{{ post.postlike_set.all|length }}</small></small>
+                        {% for like in post.postlike_set.all %}
+                            {% if request.user.is_authenticated and user == like.user %}
+                                <a onclick=delete_like(this) href="{% url 'delete_like' like.id %}">&#128156;{{like.id}}</a>
+                            {% endif %} 
+                        {% endfor %}
+                    {% else %}
+                        <a onclick=like(this) href="{% url 'post-like' post.id %} ">&#128420;</a>
+                    {% endif %}
+
+                </div>-->
+                
+
+                <div class="content">
+                <!--like-->
+
+
+                    <span style="color: gray; text-decoration: none; position: absolute; bottom: 15px;">&#128156;
+                        {% if post.postlike_set.all %}
+                            <small><small>{{ post.postlike_set.all|length }}</small></small>
+                        {% endif %}
+                    </span> 
+                    {% if request.user.is_authenticated %}
+                        <a style="color: gray; text-decoration: none; position: absolute; bottom: 15px;" onclick=like(this) href="{{ post.get_absolute_url }}/like/ ">&#128420;</a>
+                        {% for like in post.postlike_set.all %} 
+                            {% if request.user.is_authenticated and user == like.user %}
+                                <a style="color: gray; text-decoration: none; position: absolute; bottom: 15px;" onclick = delete_like(this) href="{% url 'delete_like' like.id %}">&#128156;</a>
+                            {% endif %}
+                        {% endfor %}
+                    {% else %}
+                        <a style="color: gray; text-decoration: none; position: absolute; bottom: 15px;" href="{% url 'login' %}">&#128156;</a> 
+                    {% endif %}
+
+
+                    <!--Comment-->
+                    {% if post.postcomment_set.all|length %}
+                        {% if post.postcomment_set.all|length > 1 %}
+                            <a style="color: gray; text-decoration: none; position: absolute; right: 20px; bottom: 15px;" href="{{ post.get_absolute_url }}/comment/ "> <small>{{ post.postcomment_set.all|length }}</small> Comments</a>
+                        {% else %}
+                        <a style="color: gray; text-decoration: none; position: absolute; right: 20px; bottom: 15px;" href="{{ post.get_absolute_url }}/comment/ "> <small>1</small> Comment</a>
+                        {% endif %}
+                    {% else %} 
+                    <a style="color: gray; text-decoration: none; position: absolute; right: 20px; bottom: 15px;" href="{{ post.get_absolute_url }}/comment/ ">Comment</a>
+                    {% endif %}
+                </div>
+                <script>
+                    function like(link) {
+                        link.innerHTML = '&#128156;';
+                        link.style.zIndex = "-1";
+                    }
+                    function delete_like(link) {
+                        link.style.zIndex = "-1";
+                    }
+
+                </script>
+
+            </div>
+            
+        </div>
+        {% endfor %}
+    </div>
+
+
+    <div class="loading section_title" style="display: none; color: green;">
+        Loading...
+    </div>
+
+    {% if posts.has_next %}
+    <a class="infinite-more-link" href="?feed={{ posts.next_page_number }}"></a>
+    {% endif %}
+
+    <script>
+        var infinite = new Waypoint.Infinite({
+            element: $('.infinite-container')[0],
+            onBeforePageLoad: function() {
+                $('.loading').show();
+            },
+            onAfterPageLoad: function($items) {
+                $('.loading').hide();
+            }
+        });
+    </script>
+</div>
+{% endblock content %}

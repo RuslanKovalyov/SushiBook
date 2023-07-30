@@ -1,0 +1,84 @@
+{% load static %}
+<div class="book">
+    <div class="header">
+        <h1>{{ page.title }}</h1>
+        <img src="{{ page.picture.url }}" alt="{{ page.picture_credit }}">
+        {% if page.picture_credit %}
+                <p class="copyrigth-credit">
+                    {{ page.picture_credit }}
+                </p>
+        {% endif %}
+    </div>
+    <div class="middle_part">
+        {% if page.note %}
+            <p>
+                <img src="{% static 'img/info.png' %}" class="text-icon" alt="icon">
+                {{ page.note }}
+            </p>
+        {% endif %}        
+
+
+        {% if page.introduction %}
+            <h2>
+                {{ page.introduction }}
+            </h2>
+        {% endif %}
+
+        {% if page.text_top %}
+            <p>
+                {{ page.text_top }}
+            </p>
+        {% endif %}
+
+        {% if page.cooking_time_and_amount %}<p style="text-align: center;">| {{ page.cooking_time_and_amount }} |</p>{% endif %}
+
+        {% if details%}
+            <h3>Ingredients:</h3>
+            {% for part in recipe_part%}
+                <h4>{{ part }}</h4>
+                <h4>{% for detail in details%}
+                        {%if detail.recipe_part == part%}
+                            - {{ detail.product.name }} : {{ detail.quantity }}
+                            {% if detail.product.note%}
+                                <br>
+                                <img src="{% static 'img/info.png' %}" class="text-icon" alt="icon">
+                                <small style="padding-left:10px;">{{ detail.product.note}}</small>
+                            {% endif %}
+                            <br>
+                        {%endif%}
+                    {%endfor%}
+                </h4>
+            {%endfor%}
+        {% endif %}
+
+        {% if page.ingredient_note %}
+            <p>
+                <img src="{% static 'img/info.png' %}" class="text-icon" alt="icon">
+                {{ page.ingredient_note }}
+            </p>
+        {% endif %} 
+        <hr>
+
+
+        {% if page.title_directions_1 %}<h3>{{ page.title_directions_1 }}</h3>{% endif %}
+        {% if page.directions_1 %}<p>{{ page.directions_1 }}</p>{% endif %}
+        {% if page.title_directions_2 %}<h3>{{ page.title_directions_2 }}</h3>{% endif %}
+        {% if page.directions_2 %}<p>{{ page.directions_2 }}</p>{% endif %}
+        {% if page.title_directions_3 %}<h3>{{ page.title_directions_3 }}</h3>{% endif %}
+        {% if page.directions_3 %}<p>{{ page.directions_3 }}</p>{% endif %}
+        {% if page.title_directions_4 %}<h3>{{ page.title_directions_4 }}</h3>{% endif %}
+        {% if page.directions_4 %}<p>{{ page.directions_4 }}</p>{% endif %}
+        {% if page.title_directions_5 %}<h3>{{ page.title_directions_5 }}</h3>{% endif %}
+        {% if page.directions_5 %}<p>{{ page.directions_5 }}</p>{% endif %}
+
+        {% if page.text_bottom %}<p>{{ page.text_bottom }}</p>{% endif %}
+        <!-- {% if page. %}<p>{{ page. }}</p>{% endif %} -->
+
+
+    </div>
+    <div class="footer" id="media_bar">
+            <p style="text-align: right;">
+                sushibook.com © 2022
+            </p>
+    </div>
+</div >

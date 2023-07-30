@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>&#128156;</title>
+</head>
+
+<body style="background-color: black;">
+    <h1 style="font-size: 25ch; margin-top: 10vh; text-align: center;">&#128156;</h1>
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form.as_table }}
+        </table>
+        <input type="hidden" name="next" value="{{ request.path }}">
+        <input style="visibility: hidden;" id="like" type="submit" value="Like" />
+    </form>
+
+
+
+
+    <p id="p1"></p>
+    <script>
+        var x = window.location.href.split('/');
+        if (x.splice(-1, 1) != "?") {
+            document.getElementById("like").click();
+        } else {
+            window.history.back();
+        }
+    </script>
+</body>
+
+</html>

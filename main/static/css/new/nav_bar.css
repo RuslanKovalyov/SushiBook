@@ -1,0 +1,82 @@
+.bar * {
+    color: #00c291;
+    font-size: 22px;
+    text-align: left;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    transition: 0.2s;
+}
+
+.bar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    bottom: 0;
+    width: 100vw;
+    box-shadow: 0 0px 10px 5px rgba(0, 0, 0, 0.1);
+    z-index: 2;
+}
+
+.bar a:hover {
+    color: orangered;
+    text-shadow: 0px 0px 5px black;
+    cursor: pointer;
+    transition: 200ms;
+}
+
+.bar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 0;
+    font-size: 36px;
+    font-weight: bold;
+    text-shadow: 0px 0px 15px white;
+    margin: 12px 12px 0px 0px;
+}
+
+.bar .nav {
+    background-color: #0a0f0cee;
+    padding: 8px;
+    margin-top: -37px;
+}
+
+.bar .side {
+    background-color: #0a0f0c;
+    width: 0;
+    /*change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    padding-top: 62px;
+    height: 100vh;
+    line-height: 1.5;
+}
+
+.bar .nav a {
+    text-decoration: none;
+    margin-inline: 10px;
+}
+
+.bar .side a {
+    padding: 5px 12px 5px 22px;
+    text-decoration: none;
+    font-size: 25px;
+    display: block;
+}
+
+.bar .mobile_screen {
+    position: absolute;
+    visibility: hidden;
+}
+
+@media screen and (max-width: 900px) {
+    .bar .pc_screen {
+        position: absolute;
+        visibility: hidden;
+    }
+    .bar .mobile_screen {
+        position: relative;
+        visibility: visible;
+    }
+}

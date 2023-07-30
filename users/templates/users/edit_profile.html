@@ -1,0 +1,70 @@
+{% extends 'base.html' %}{% load static %}{% block navbar_links %}
+<li style="float: right;">
+    <a href="{{ user.profile.get_absolute_url }}">Profile</a>
+</li>
+{% endblock navbar_links %}{% block content %}
+<!--wrap-->
+
+
+<div class="profle_card_wrap">
+    <!--images-->
+    <div class="profile_card_images">
+        <img id="backgr" class="profile_background" alt="background" src="{{ user.profile.profile_background.url }}" />
+        <img id="avatar" class="profile_avatar" alt="profile picture" src="{{ user.profile.avatar.url }}" />
+
+        <script language="javascript" type="text/javascript">
+            var d = new Date();
+            document.getElementById("avatar").src =
+                "{{ user.profile.avatar.url }}?ver" +
+                d.getTime();
+
+            document.getElementById("backgr").src =
+                "{{ user.profile.profile_background.url }}?ver" +
+                d.getTime();
+        </script>
+
+    </div>
+
+    <div class="profile_info">
+        <form method="post" action="{% url 'edit_profile' %}" enctype="multipart/form-data">
+
+            <div class="group">
+                <label>Profile Picture:</label>
+                <a class="rotate_btn small_btn" href="{% url 'rotate_avatar' %}"> <img class="rotate_ico" src="{% static 'img/ico/rotate.png' %}">Rotate</a>{{ profile_form.avatar }}
+
+                <label>Cover Photo:</label>
+                <a class="rotate_btn small_btn" href="{% url 'rotate_background' %}"> <img class="rotate_ico" src="{% static 'img/ico/rotate.png' %}">Rotate</a>{{ profile_form.profile_background }}
+            </div>
+            <div class="group">
+                {% csrf_token %}
+                <label>* Email:</label> {{ user_form.email }}
+                <label>* First name:</label> {{ profile_form.first_name }}
+                <label>* Last name:</label> {{ profile_form.last_name }}
+                <label>* Country/Region:</label> <br>{{ profile_form.country }} <br><br>
+                <label>City/District:</label> <br>{{ profile_form.city }} {{ profile_form.phone.errors }}
+                <label>Phone number:</label> {{ profile_form.phone }}
+                <label>Current work position:</label> {{ profile_form.current_position }}
+                <label>Headline <small>(About, Credo, Bio, etc.)</small>:</label> {{ profile_form.credo }}
+                <label>Date of birth:</label> <br>{{ profile_form.date_of_birth }}
+            </div>
+            <div class="group">
+                <input class="btn" type="submit" value="Save" />
+                <!--<input class="btn_red" type="reset" value="Reset" />-->
+            </div>
+        </form>
+        <div class="hr"></div>
+
+        <div class="battom_link">
+            <a href="{% url 'password_change' %}">Change password</a>
+            <br>
+            <a href="{{ user.profile.get_absolute_url }}">&cross; cancel</a>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+{% endblock content %} {% block media_bar %} {% endblock media_bar %}

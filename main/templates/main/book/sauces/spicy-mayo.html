@@ -1,0 +1,85 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/sauces.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/calc.css' %}" type="text/css">
+<script src="{% static 'scripts/calc/spicy-mayo_calc.js' %}" async></script>
+<title>Spicy Mayo | Sushi Book</title>
+<meta name="description" content="Spicy Mayo is a rich & yummy mayonnaise. Popular in sushi restaurants, and very easy to cook.">
+<!---->{%endblock %}
+
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1>Spicy Mayo</h1>
+        <img src="{% static 'img/book/sauces/spicy-mayo.jpg' %}" alt="Spicy Mayo">
+    </div>
+
+    <div class="book_content">
+        <p class="info">
+            Author Ruslan Kovalev
+        </p>
+        <h2>Spicy mayonnaise is a rich & yummy sauce, incredibly popular in sushi restaurants and very easy to cook.
+        </h2>
+
+        <h3>
+            I will reveal for you one of the most delicious and special recipes, and other one, called "classic", in short description.
+        </h3>
+        <p class="info">
+            Flying fish caviar will give incredible texture, and yuzu juice will add super rich flavor.
+        </p>
+        <p class="cooking_info">
+            | cooking 5min |
+        </p>
+
+        <p>
+            <strong>INGREDIENTS</strong>
+            <strong>
+                <li>Japanese Kewpie mayonnaise<span class="info"><small> - 100ml</small></span></li>
+            </strong>
+            <strong>
+                <li>sriracha hot chili sauce<span class="info"><small> - 20ml</small></span></li>
+            </strong>
+            <strong>
+                <li>sweet chili sauce<span class="info"><small> - 10ml</small></span></li>
+            </strong>
+            <strong>
+                <li>Chili oil<span class="info"><small> - 5ml</small></span></li>
+            </strong>
+            <strong>
+                <li>Togarashi (Mixed Chili)<span class="info"><small> - 3gr</small></span></li>
+            </strong>
+            <strong>
+                <li>Yuzu juice<span class="info"><small> - 5ml</small></span></li>
+            </strong>
+            <strong>
+                <li>Sesame oil<span class="info"><small> - 5ml</small></span></li>
+            </strong>
+            <strong>
+                <li>Tobiko (flying fish roe)<span class="info"><small> ~ 5gr</small></span></li>
+            </strong>
+        </p>
+        <p>
+            <strong>INSTRUCTIONS</strong><br><br> Combine ingredients and mix well.
+        </p>
+
+        <p class="info">
+            Another simple Spicy mayonnaise recipe is 1 cup mayonnaise, 4 tablespoons Sriracha sauce and 1 teaspoon sesame oil.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br>
+    </div>
+</div>
+<!---->{% endblock %}
+
+<!---->{% block calculator%}
+<div class="calc">
+    <h3>Magic Calculator by <a href="{% url 'home' %}">Sushi&nbsp;Book</a></h3>
+    <h4>Calculate "Spicy Mayo" recipe based on the main ingredient "Japanese Mayonnaise"</h2>
+        <strong>Japanese Mayonnaise in milliliters:</strong> <input type="number" id="myNumber" value="250">
+        <button class="btn" type="button" onclick="writ()">Calculate</button>
+        <table id='tbl' border=1></table>
+        <script>
+            writ();
+        </script>
+</div>
+<!---->{% endblock %}

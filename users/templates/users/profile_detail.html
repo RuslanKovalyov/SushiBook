@@ -1,0 +1,122 @@
+{% extends 'base.html' %}{% load static %}{% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/registration.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/post.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
+<link rel="stylesheet" href="{% static 'css/users_app/create_post.css' %}" type="text/css"> {% endblock head %} {% block navbar_links %}
+<li style="float: right;">
+    <a href="{% url 'community' %}">Community</a>
+</li>
+{% endblock navbar_links %} {% block content %}
+
+<!--PROFILE-->
+<div class="profle_card_wrap">
+    <!--images-->
+    <div class="profile_card_images">
+        <img class="profile_background" alt="background" src="{{ profile.profile_background.url }}" />
+        <img class="profile_avatar" alt="profile picture" src="{{ profile.avatar.url }}" />
+    </div>
+    <!--info-->
+    <div class="profile_info">
+        {% if user.profile == profile %} {% if profile_form.errors %}{{ profile_form.errors }}<a class="error" href="{% url 'edit_profile' %}"> >> Edit profile</a> {% endif %} {% endif %}
+        <!---->
+        {% if profile.first_name %}
+        <h1>{{ profile.first_name }} {{ profile.last_name | default:'' }}</h1>
+        {% else %}
+        <h4>{{ profile }}</h4>
+        {% endif %}
+
+        <p>{{ profile.current_position | default:'' }}</p>
+        <p>{{ profile.credo | default:'' }}</p>
+        <div class="contacts">
+            <p>{% if profile.city %}<img class="ico" src="{% static 'img/ico/location-ico.png' %}">{{ profile.city | default:'' }}, {% endif %} {{ profile.country.name | default:'' }} <i class="flag2x {{ profile.country.flag_css }}"></i>
+                <br>{% if profile.phone %}<img class="ico" src="{% static 'img/ico/phone-ico.png' %}">{{ profile.phone }}{% endif %}</p>
+        </div>
+        {% if user.profile == profile %}
+        <a class="btn_classic" href="{% url 'edit_profile' %}"> <img class="ico" src="{% static 'img/ico/edit-icon.png' %}">Edit profile</a>
+        <a class="btn_classic" href="{% url 'logout' %}">Log out</a> {% endif %}
+    </div>
+</div>
+
+<!--CREATE POST-->
+{% if user.profile == profile %}
+<script>
+    function open_url() {
+        location.href = "{% url 'create_post' %}";
+    }
+</script>
+
+<div onclick=open_url()>
+    <div class="create_post_card_wrap">
+        <div class="content">
+            <div class="small_box_create_post">
+                <a href="{{ user.profile.get_absolute_url }}"><img class="avatar" src="{{ user.profile.avatar.url }}" alt="profile picture" /></a>
+                <span class="text"> Write your post.</span>
+            </div>
+        </div>
+    </div>
+</div>
+{% endif %}
+
+
+<!--POSTS-->
+{% if profile.post_set.all %} {% for post in profile.post_set.all %}
+<div class="post_card_wrap">
+    {% if user.profile == profile %}
+    <a class="closebtn" href="{{ post.get_absolute_url }}/renew/">
+        <span class="hoverable">
+        <span class="hoverable__main">&bull;&bull;&bull;</span>
+        <span class="hoverable__tooltip">Edit</span>
+        </span>
+    </a>
+    {% endif %}
+
+    <div class="content">
+        <h3 class="title">{{ post.title }}</h3>
+        <h5 class="story">
+            {{ post.story }}
+        </h5>
+    </div>
+    {% if post.picture %}
+    <img class="post_picture" src="{{ post.picture.url }}" /> {% endif %}
+
+    <!--like-->
+    <div class="content">
+        <br>
+
+        <span style="color: gray; text-decoration: none; position: absolute; bottom: 15px;">&#128156; 
+            {% if post.postlike_set.all %}
+                <small><small>{{ post.postlike_set.all|length }}</small></small> 
+            {% endif %}
+        </span>
+        <a style="color: gray; text-decoration: none; position: absolute; bottom: 15px;" onclick=like(this) href="{{ post.get_absolute_url }}/like/ ">&#128420;</a>
+        {% for like in post.postlike_set.all %} 
+            {% if user == like.user %}
+                <a style="color: gray; text-decoration: none; position: absolute; bottom: 15px;" onclick = delete_like(this) href="{% url 'delete_like' like.id %}">&#128156;</a>
+            {% endif %} 
+        {% endfor %}
+        
+        <!--Comment-->
+        {% if post.postcomment_set.all|length %}
+            {% if post.postcomment_set.all|length > 1 %}
+                <a style="color: gray; text-decoration: none; position: absolute; right: 20px; bottom: 15px;" href="{{ post.get_absolute_url }}/comment/ "> <small>{{ post.postcomment_set.all|length }}</small> Comments</a>
+            {% else %}
+            <a style="color: gray; text-decoration: none; position: absolute; right: 20px; bottom: 15px;" href="{{ post.get_absolute_url }}/comment/ "> <small>1</small> Comment</a>
+            {% endif %}
+        {% else %} 
+        <a style="color: gray; text-decoration: none; position: absolute; right: 20px; bottom: 15px;" href="{{ post.get_absolute_url }}/comment/ ">Comment</a>
+        {% endif %}
+
+    </div>
+    <script>
+        function like(link) {
+            link.innerHTML = '&#128156;';
+            link.style.zIndex = "-1";
+        }
+        function delete_like(link) {
+            link.style.zIndex = "-1";
+        }
+    </script>
+
+</div>
+{% endfor %}{% endif %} {% endblock content %}

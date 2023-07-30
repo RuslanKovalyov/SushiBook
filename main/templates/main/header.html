@@ -1,0 +1,12 @@
+{% load static %}
+<header onclick="closeNav()">
+    <img src="{% static 'img/home/head.jpg' %}" alt="">
+    <div class="logo">
+        <h2>
+            <strong >
+                <a  href="{% url 'home' %}">Sushi&nbsp;Book</a>
+            </strong>
+        </h2> 
+    </div>
+</header>
+<script src="{% static 'scripts/auto-scroll.js' %}"></script>

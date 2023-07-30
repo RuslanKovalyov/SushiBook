@@ -1,0 +1,62 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=yes,shrink-to-fit=no">
+    <meta name="theme-color" content="#0a0f0c">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/home_page_big.css' %}" type="text/css">
+
+    <!-- title, description, etc-->
+    <title>
+        {% if page.title %}
+            {{ page.title }}
+        {% else%}
+            Sushi Book
+        {% endif %}
+    </title>
+    {% if page.description %}
+        <meta name="description"content="{{ page.description }}">
+    {% endif %}
+
+
+   <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT9V3VSBNV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-YT9V3VSBNV');
+    </script>
+
+
+</head>
+<body>
+    {% include 'main/header_short.html' %}
+
+        <div class="btn_bookmark">
+            <a href="#media_bar">Chapters
+            <img src="{% static 'img/ico/bookmark-icon.png' %}" alt=""></a>
+        </div>
+
+    {% include 'main/nav_bar.html' %}
+
+    <div class='content' onclick="closeNav()">
+        <section>
+            {% include 'book/book.html' %}
+            {% include 'book/media_bar_chapters.html' %}
+            <hr style="width:100%;visibility: hidden;">
+        </section>
+    </div>
+    <h3 style="text-align:center;">
+        <a href="{% url 'community' %}">Community</a>
+    </h3>
+    {% include 'main/people_horizont_feed.html' %}
+    {% include 'main/footer.html' %}
+</body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/registration.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/post.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}"> {% endblock head %}
+<!---->{% block auto-scroll %}{% endblock auto-scroll %}
+<!---->{% block header %}{% endblock header %}
+<!---->
+{% comment %} {% block navbar_links %}
+    <li style="float: right;">
+        <a href="/">Home</a>
+    </li>
+{% endblock navbar_links %} {% endcomment %}
+<!---->{% block media_bar %}{% endblock media_bar %}

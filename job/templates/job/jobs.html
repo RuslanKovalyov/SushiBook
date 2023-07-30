@@ -1,0 +1,127 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=yes,shrink-to-fit=no">
+    <meta name="theme-color" content="#0a0f0c">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/new/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/new/header.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/new/nav_bar.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/new/footer.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/job_app/job.css' %}" type="text/css">
+    
+     <!-- title, description, etc-->
+     <title>Sushi Book{% if page.title %} | {{ page.title }}{% endif %}</title>
+    <meta name="description" content='Best staff and highest salary can only be found in the best sushi restaurants. The restaurants on the sushibook.com platform have the status of a community partner and are interested in maintaining the reputation of a great workplace with a great team and a decent salary. To learn more...'>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT9V3VSBNV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-YT9V3VSBNV');
+    </script>
+</head>
+
+<body>
+    {% include 'main/header_short.html' %}
+    {% include 'main/nav_bar.html' %}
+    <div class='content' onclick="closeNav()">
+        <section>
+            <div class="search">
+                <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="City search..." title="Type in a city">
+            </div>
+            
+            <div id="card">
+                {% for el in jobs %}
+                <search>
+                    <a style="visibility: hidden;">{{ el.city }}</a>
+                    <div class="job_card">
+
+                        <div style="width:100%; text-align: center;color:rgb(0, 100, 0);">
+                            <big><strong>{{ el.position }}</strong></big>
+                            <hr>
+                        </div>
+                        
+                        <div style="height: 100px;">
+                            <div style="width:70%; float:left; color:rgb(20, 50, 20);">
+                                <p>{{ el.company_name }} <br>{{ el.country }} - {{ el.city }}<br> <span style="background-color: rgba(0, 77, 29, 0.164); padding-inline: 7px; border-radius: 3px;">{{ el.salary }}</span>
+                            </div>
+
+                            <div style="width:30%; float:right;">
+                                <img alt="workplace" src="{{ el.picture.url }}">
+                            </div>
+                        </div>
+                        <div class="more">
+                            <button>read&nbsp;more...</button>
+                            <br>
+                            <span class="head_content">
+                                <br>
+                                <p><strong>Responsibilities:</strong><br>
+                                    {{ el.Responsibilities }}</p>
+                                <p><strong>Qualifications:</strong><br>
+                                    {{ el.Qualifications }}</p>
+                                <p><strong>description:</strong><br>
+                                    {{ el.description }}</p>
+                                <p><strong>address:</strong><br>
+                                    {{ el.address }}</p>
+                                <br>
+                                <br>
+                                <a class="contact_job_btn" href="https://api.whatsapp.com/send?phone=972528925522&text=Hi! Liked one of the vacancies. My name is ...">Contact</a>
+                            </span>
+                        </div>
+                        </p>
+                        <!--<p class="card_date">{{ el.date }}</p>-->
+                    </div>
+                </search>
+                {% endfor%}
+                <h2 id="no_elements" style="display: none; color: chocolate;"><big><strong>No offers found.</strong></big> </h2>
+            </div>
+        </section>
+    </div>
+    {% include 'main/footer.html' %}
+</body>
+
+<script>
+    var header = document.getElementById("card");
+    var btns = header.getElementsByClassName("more");
+    for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function() {
+            this.className = "active";
+        });
+    }
+</script>
+<script>
+    function searchFunction() {
+        var input, filter, card, ta, a, i, txtValue, counter;
+        counter = 0;
+        input = document.getElementById("myInput");
+        filter = input.value.toUpperCase();
+        card = document.getElementById("card");
+        ta = card.getElementsByTagName("search");
+        for (i = 0; i < ta.length; i++) {
+            a = ta[i].getElementsByTagName("a")[0];
+            txtValue = a.textContent || a.innerText;
+            if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                ta[i].style.display = "";
+                counter += 1;
+            } else {
+                ta[i].style.display = "none";
+            }
+        }
+        if (counter) {
+            document.getElementById("no_elements").style.display = "none"
+        } else {
+            document.getElementById("no_elements").style.display = ""
+        }
+    }
+</script>
+
+</html>

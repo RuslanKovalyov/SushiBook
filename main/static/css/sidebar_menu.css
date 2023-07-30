@@ -1,0 +1,86 @@
+/* The sidebar menu */
+
+.sidebar {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    height: 100%;
+    /* 100% Full-height */
+    width: 0;
+    /* 0 width - change this with JavaScript */
+    position: fixed;
+    /* Stay in place */
+    z-index: 2;
+    /* Stay on higher top */
+    top: 0;
+    left: 0;
+    background-color: #0a0f0c;
+    /* RB*/
+    overflow-x: hidden;
+    /* Disable horizontal scroll */
+    padding-top: 100px;
+    /* Place content 60px from the top */
+    transition: 0.3s;
+    /* 0.5 second transition effect to slide in the sidebar */
+    word-wrap: normal;
+    /*not ready onlly for test on apple !!!*/
+    min-height: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    -ms-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    -webkit-text-size-adjust: 100%;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-overflow-scrolling: touch;
+    -ms-touch-action: manipulation;
+    touch-action: manipulation;
+}
+
+
+/* The sidebar links */
+
+.sidebar a {
+    padding: 8px 32px 8px 18px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #00c291;
+    display: block;
+}
+
+
+/* When you mouse over the navigation links, change their color */
+
+.sidebar a:hover {
+    color: orangered;
+}
+
+
+/* Position and style the close button (top right corner) */
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 5px;
+    margin-left: 50px;
+    font-size: 26px;
+    font-weight: bold;
+    text-shadow: 0px 0px 15px white;
+}
+
+
+/* Style page content - use this if you want to push the page content to the right when you open the side navigation */
+
+#side {
+    transition: margin-left 0.3s;
+    /* If you want a transition effect */
+}
+
+
+/* On smaller screens, where height is less than 450px, change the style of the sidenav (less padding and a smaller font size) */
+
+@media screen and (max-height: 450px) {
+    .sidebar {
+        padding-top: 5px;
+    }
+    .sidebar a {
+        font-size: 12px;
+    }
+}

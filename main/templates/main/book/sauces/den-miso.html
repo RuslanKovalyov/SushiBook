@@ -1,0 +1,69 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/sauces.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/calc.css' %}" type="text/css">
+<script src="{% static 'scripts/calc/den-miso_calc.js' %}" async></script>
+<title>Den Miso | Sushi Book</title>
+<meta name="description" content="Den miso is a Japanese sauce commonly used for glazing cod. But modern sushi restaurants have made this sauce really popular. Forever. Nigiri salmon glazed with this sauce will surely please even the discerning gourmet.">
+<!---->{%endblock %}
+
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1>Miso Glaze</h1>
+        <img src="{% static 'img/book/sauces/den-miso.jpg' %}" alt="Den miso sauce">
+    </div>
+
+    <div class="book_content">
+
+        <h3 class="info">SWEET MISO GLAZE <small>(JAPANESE DEN&nbsp;MISO)</small>
+        </h3>
+
+        <h3>
+            Den miso is a Japanese sauce commonly used for glazing cod. But modern sushi restaurants have made this sauce really popular. Forever. Nigiri salmon glazed with this sauce will surely please even the discerning gourmet.
+        </h3>
+
+        <p class="cooking_info">
+            | cooking 10min |
+        </p>
+
+        <p>
+            <strong>INGREDIENTS <br>
+                <li>Miso paste - Shiro(white) miso<span class="info"><small> - 200<small>g</small> &nbsp;<small>4/5cup</small></small></span></li>
+                <li>Mirin<span class="info"><small> - 70<small>ml</small> <small>1/4cup</small></small></span></li>
+                <li>Sake<span class="info"><small> - 70<small>ml</small> <small>1/4cup</small></small></span></li>
+                <li>Sugar<span class="info"><small> - 100<small>g</small> <small>1/2cup</small></small></span></li>
+            </strong>
+
+        </p>
+        <p>
+            <strong>INSTRUCTIONS<br><br> 
+                1 Put the sake and mirin in a nonreactive saucepan and bring to a boil. <br>
+                2 Add the miso paste and blend it into a smooth sauce. <br>
+                3 Add the sugar and continue stirring so the sauce does not burn. <br>
+                4 When the sugar dissolves, turn off the heat and cool to room temperature. <br>
+                
+            </strong>
+        </p>
+
+        <p class="info">
+            Keep in the refrigerator for up to 1 months.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br>
+    </div>
+</div>
+<!---->{% endblock %}
+
+<!---->{% block calculator%}
+<div class="calc">
+    <h3>Magic Calculator by <a href="{% url 'home' %}">Sushi&nbsp;Book</a></h3>
+    <h4>Calculate "SWEET MISO GLAZE" recipe based on the main ingredient "Shiro Miso"</h2>
+        <strong>Shiro Miso in grams:</strong> <input type="number" id="myNumber" value="200">
+        <button class="btn" type="button" onclick="writ()">Calculate</button>
+        <table id='tbl' border=1></table>
+        <script>
+            writ();
+        </script>
+</div>
+<!---->{% endblock %}

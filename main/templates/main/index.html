@@ -1,0 +1,68 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+
+<title>Sushi Book</title>
+<meta name="description" content='The Sushi Book is a free sushi Guide and recipe hub, created and edited by Community. 
+Everyone can be a sushi master or chef if they love sushi and learn it!'>
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book">
+    <div class="book_header">
+        <h1>Sushi Book</h1>
+        <img src="{% static 'img/home/book_header.jpg' %}" alt="maki sushi">
+    </div>
+
+    <div class="book_content">
+
+        <p style="color: rgb(0, 22, 1);"><strong><img src="{% static 'img/info.png' %}" class="text-icon" alt="icon"> About the project</strong>
+        </p>
+
+        <h2>Sushi Book is a sushi guide and recipe hub created and edited by the community. Anyone can become a sushi chef if they love sushi and do it!
+        </h2>
+
+        <p>
+            Top sushi chefs share cooking techniques, create masterpieces and inspire others. The younger generation, in turn, challenges them, creates trends and uses creativity to challenge the classic foundations of sushi craft. United together, these wonderful
+            people create new amazing recipes and rethink old ones, openly discuss the problems of the sushi industry, food safety, change the specifics of the profession right now! Join the sushi community and change the world together, improve the working
+            environment in restaurants by talking openly about existing problems, inspire others to do beautiful things and get inspired yourself! The Sushi Book created by all of us. Because all magic is about collaboration and connection. Together it's
+            powerful, creative and fun!<br>
+            <br>
+            <strong>Sushi Book is really free!</strong>
+            <ul>
+                <li>
+                    No banner ads.
+                </li>
+                <li>
+                    No mailings, notifications ,etc.
+                </li>
+                <li>
+                    Only the content you need.
+                </li>
+            </ul>
+            Because we love sushi and believe in the free WEB!
+        </p>
+    </div>
+</div>
+
+{% endblock %} {% block pre_footer %}
+
+<!--People-->
+{% if people %}
+<h3 style="text-align: center;">Community</h3>
+<div class="row scrolling-wrapper-flexbox">
+    {% if people.has_previous %}
+    <a class="column next_btn" href="?page={{ people.previous_page_number }}">&#8592;</a> {% endif %} {% for person in people %}
+    <div class="column">
+        <div class="profle_card_small_preview" onclick="location.href='{{ person.get_absolute_url }}'">
+            <img class="small-avatar" src="{{ person.avatar.url }}" /> {% if person.first_name %}
+            <span class="text-on-image">
+                {{ person.first_name }} {{ person.last_name | default:'' }}
+            </span> {% endif %}
+        </div>
+    </div>
+    {% endfor %} {% if people.has_next %}
+    <!--<a class="column next_btn" href="?page={{ people.next_page_number }}">next&nbsp;&#8594;</a> -->
+    <a class="column next_btn" href="{% url 'community' %}">next&nbsp;&#8594;</a> {% endif %}
+    <!--Page {{ people.number }} of {{ people.paginator.num_pages }}-->
+</div>
+{% endif %} {% endblock pre_footer %}

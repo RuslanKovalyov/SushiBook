@@ -1,0 +1,42 @@
+{% extends "base.html" %}{% load static %}{% block head %}
+    <link rel="stylesheet" href="{% static 'css/news.css' %}" type="text/css">
+    <title>Sushi News</title>
+    <meta name="description" content='Sushi News, trends, new restaurants and all about japanese yummy & creative.'>
+{% endblock head %} 
+{% block content %}
+    <div id="article">
+        {% for el in news %}
+        <div class="news_card">
+            <h1 class="title">{{ el.title }}</h1>
+            <img src="{{ el.picture.url }}" alt="Salamon">
+            {% if el.picture_credit %}
+                <p class="copyrigth-credit">
+                    {{ el.picture_credit }}
+                </p>
+            {% endif %}
+            <p class="photo_date">{{ el.date }}</p>
+            <h3>{{ el.description }}</h3>
+
+
+            <div class="read_more">
+                <p>
+                    <span>{{ el.preview }}<span class="btn"><big><strong>...read&nbsp;more</strong></big></span></span>
+                    <span class="content">{{ el.content }}</span>
+                </p>
+            </div>
+        </div>
+        {% endfor%}
+    </div>
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("article");
+        var btns = header.getElementsByClassName("read_more");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                //var current = document.getElementsByClassName("active");
+                //current[0].className = current[0].className.replace(" active", "");
+                this.className = "active";
+            });
+        }
+    </script>
+{% endblock %}

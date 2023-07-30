@@ -1,0 +1,70 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/sauces.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/calc.css' %}" type="text/css">
+<script src="{% static 'scripts/calc/teriyaki_calc.js' %}" async></script>
+<title>Teriyaki Sauce | Sushi Book</title>
+<meta name="description" content="Japanese-style teriyaki sauce can be made easily at home using just a few simple pantry ingredients in just 10-15 minutes.">
+<!---->{%endblock %}
+
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1>Teriyaki</h1>
+        <img src="{% static 'img/book/sauces/teriyaki.jpg' %}" alt="Tetiyaki">
+    </div>
+
+    <div class="book_content">
+        <h2>Teriyaki is a Japanese way of frying food in sweet sauce, caramelizing the sauce adds shine and texture.
+        </h2>
+
+        <h3>The word is made up of two Japanese words - teri "shine" and yaki "fried", but in most cases the word is used to refer to the sauce itself.
+        </h3>
+        <p class="info">
+            Teriyaki Sauce can be cooked in advance and stored, or for one meal. the recipe for ease of conversion will be presented as 1 liter of soy sauce.This Cooking Method is an average version of popular sushi restaurants.
+        </p>
+        <p class="cooking_info">
+            | cooking 10min |
+        </p>
+
+        <p>
+            <strong>INGREDIENTS</strong>
+            <strong>
+                <li>Soy Sauce<span class="info"><small> - 100ml</small></span></li>
+            </strong>
+            <strong>
+                <li>Mirin <span class="info"><small> - 100ml</small></span></li>
+            </strong>
+            <strong>
+                <li>Sugar<span class="info"><small> - 150gr</small></span></li>
+            </strong>
+        </p>
+        <p class="info">
+            If you are using the optional fresh gingerroot and/or garlic, slice or chop the ginger and garlic and add it to the other ingredients.
+        </p>
+        <p>
+            <strong>INSTRUCTIONS</strong><br><br> Mix all the ingredients in a saucepan, bring to a boil, stirring without fail! otherwise the sugar will burn and the soy sauce runs off like milk when it boils. reduce heat when bubbles appear and simmer
+            for about 4 minutes until sauce is glossy. Remove from heat and let cool. The sauce will thicken as it cools. Pour the sauce to a sterilized jar. Store in the refrigerator for up to 2 weeks.
+        </p>
+
+        <p class="info">
+            Another simple teriyaki sauce recipe is a 1: 1 ratio with equal parts soy sauce and white sugar. This recipe is great if you don't have Mirin, or if the ingredient isn't available to you.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br>
+    </div>
+</div>
+<!---->{% endblock %}
+
+<!---->{% block calculator%}
+<div class="calc">
+    <h3>Magic Calculator by <a href="{% url 'home' %}">Sushi&nbsp;Book</a></h3>
+    <h4>Calculate "Teriyaki" recipe based on the main ingredient "soy sauce"</h2>
+        <strong>Soy sauce in milliliters:</strong> <input type="number" id="myNumber" value="250">
+        <button class="btn" type="button" onclick="writ()">Calculate</button>
+        <table id='tbl' border=1></table>
+        <script>
+            writ();
+        </script>
+</div>
+<!---->{% endblock %}

@@ -1,0 +1,49 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<title>About | Sushi Book</title>
+<meta name="description" content='The Sushi Book is a free sushi Guide and recipe hub, created and edited by Community. 
+Everyone can be a sushi master or chef if they love sushi and learn it!'>
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book">
+    <div class="book_header">
+        <h1>Sushi Book</h1>
+        <img src="{% static 'img/home/book_header.jpg' %}" alt="">
+    </div>
+
+    <div class="book_content">
+
+        <p style="color: rgb(0, 22, 1);"><strong><img src="{% static 'img/info.png' %}" class="text-icon" alt="icon"> about the project</strong>
+        </p>
+
+        <h2>The Sushi Book is a sushi guide and recipe hub created and edited by the community. Anyone can become a sushi chef if they love sushi and do it!
+        </h2>
+
+        <p>
+            Top sushi chefs share cooking techniques, create masterpieces and inspire others. The younger generation, in turn, challenges them, creates trends and uses creativity to challenge the classic foundations of sushi craft. United together, these wonderful
+            people create new amazing recipes and rethink old ones, openly discuss the problems of the sushi industry, food safety, change the specifics of the profession right now! Join the sushi community and change the world together, improve the working
+            environment in restaurants by talking openly about existing problems, inspire others to do beautiful things and get inspired yourself! The Sushi Book created by all of us. Because all magic is about collaboration and connection. Together it's
+            powerful, creative and fun!<br>
+            <br>
+            <strong>Our goals:</strong>
+            <ul>
+                <li>
+                    Popularization of the sushi industry, as it promotes the consumption of natural and high-quality food, which affects the quality and duration of life.
+                </li>
+                <li>
+                    Opportunity to learn new things, improve qualifications and food safety by learning about raw fish handling and tool care.
+                </li>
+                <li>
+                    Career growth. Show your skills to the world and get job offers from the best restaurants. or just share your knowledge and let someone else move forward.
+                </li>
+                <li>
+                    Reduce the scarcity of sushi chefs in restaurants.
+                </li>
+            </ul>
+
+            The Sushi Book is free, there are no banner ads, mailings, notifications or other technologies that in any way distract from the general essence and purpose of the site. Because we believe in a good and useful Internet!
+        </p>
+
+    </div>
+</div>
+<!---->{% endblock %}

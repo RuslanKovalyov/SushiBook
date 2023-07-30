@@ -1,0 +1,26 @@
+{% extends "base.html" %}{% load static %}{% block head %}
+    <link rel="stylesheet" href="{% static 'css/partners.css' %}" type="text/css">
+    <title>Partners & Friends</title>
+    <meta name="description" content='Good Fairies, Partners and Friends of the Sushi Book'>
+{% endblock head %} 
+{% block content %}
+<div style="text-align: center;">
+    <h1>Partners & Friends</h1>
+    <h3></h3>
+
+    {% for el in partners %}
+    <div class="flip-card">
+        <div class="flip-card-inner">
+            <div class="flip-card-front">
+                <img alt="Partner" src="{{ el.picture.url }}">
+                <span class="btn">more..</span>
+            </div>
+            <div class="flip-card-back">
+                <p><big><strong>{{ el.name }}</strong></big></p>
+                <p>{{ el.title }} <br> {{ el.description }}</p>
+            </div>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+{% endblock %}

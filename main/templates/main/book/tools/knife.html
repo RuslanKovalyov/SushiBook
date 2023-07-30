@@ -1,0 +1,46 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/tools.css' %}" type="text/css">
+<title>Knife | Sushi Book</title>
+<meta name="description" content="Sharpening sushi knife. Japanese knives, different from German knives, are made of very hard steel and have very sharp blades...">
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1>Knife Care</h1>
+        <img src="{% static 'img/book/tools/knife_care.jpg' %}" alt="Sharpening sushi knife">
+    </div>
+
+    <div class="book_content">
+        <h2>Japanese knives, different from German knives, are made of very hard steel and have very sharp blades
+        </h2>
+
+        <p>
+            Due to the delicate nature of Japanese knives, please do not cut frozen foods, wash in a dishwasher, twist the knife when removing it from food or use the knife in any other rough manner that may damage the blade. If you follow these precautions and take
+            care of your Japanese knife correctly, it should last you many, many years. Do not use a sharpening steel to sharpen your Japanese knife. Using a sharpening steel can damage your blade and change the body style of your knife. If your knife
+            is high carbon only, please dry immediately after use. If the knife is not dried immediately after use, it will begin to rust and discolor. Reforming the knife can restore its original style that is lost from continued sharpening.
+        </p>
+
+        <h3>sharpening sushi knife
+        </h3>
+        <p>
+            Step 1: preparing the whetstones Start by submerging the whetstone in water for 10 to 15 minutes. When no more little air bubbles appear, the stone has absorbed the optimum amount of water. Now you need to flatten the stones. This is important: if your
+            whetstone is not completely flat, it can ruin your expensive sushi knife! Flattening whetstones is done with a flattening stone or lapping plate (a coarse, flat stone used to flatten other stones). Draw a grid or a number of mark lines with
+            a pencil on the whetstone. Start rubbing the whetstone by moving it against the flattening stone back and forth. Continue rubbing until the pencil marks are gone. This indicates that the whetstone is flat and ready for use. Step 2: sharpening
+            the knife Place the whetstone on a non-slippery surface or put it in a whetstone holder. First use the low grit side of the stone. Move the blade back and forth across the entire stone with light pressure at an angle of 10 to 15˚ (roughly
+            the height of the little finger of an adult). Start at the tip of the blade. Slightly lift the handle. Pull the blade over the stone through to the middle and down to the base of the blade. Repeat this several times. Turn the knife around
+            and work on the other side of the blade. Don’t press the knife hard against the stone, but let it glide over the stone. Do each side twice for 5 minutes. So the whole process should take 20 minutes. Note: some Japanese knives are only sharpened
+            on one side only. If you are sharpening such a knife, do not sharpen the flat side. Rather lay it flat on the stone to remove any curling metal ‘burr’. Step 3: polishing the knife Repeat the above process for the same amount of time using
+            the high grit side of the whetstone. This will make your knife really sharp. Maintain the same angle at every step. Keep the whetstone wet when sharpening your knife. Don’t wipe off the grinding residue while sharpening the knife. This residue
+            helps sharpen the knife! When done, rinse the whetstone and wipe off the grinding residue. Rinse the sharpened knive in hot water. Step 4: testing the sharpness
+        </p>
+
+        <h3>Store your knife safely
+        </h3>
+        <p>
+            When the knife lies in a drawer it can get damaged by getting in contact with other steel objects. This will affect the sharpness of the blade. Always use a blade guard or, even better, a good magnet or knife block.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br><br><br>
+    </div>
+</div>
+<!---->{% endblock %}

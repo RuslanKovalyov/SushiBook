@@ -1,0 +1,43 @@
+{% load static %}
+<script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+<script src="{% static 'js/waypoints/lib/jquery.waypoints.min.js' %}"></script>
+<script src="{% static 'js/waypoints/lib/shortcuts/infinite.min.js' %}"></script>
+
+
+
+
+<!--Paginator@1-->{% if people.has_previous %}
+<a href="?face={{ people.previous_page_number }}"> previous </a> {% endif %}
+<!---->
+{% if people %} {% for item in people %} ..... iterates through people..... {% endfor %}
+<!--Page {{ people.number }} of {{ people.paginator.num_pages }}-->
+{% if people.has_next %}
+<a href="?face={{ people.next_page_number }}"> next </a> {% endif %} {% endif %}
+
+
+
+
+<!--Paginator@2-->
+<div class="infinite-container">
+    {% for number in numbers %}
+    <div class="infinite-item">{{ number }}</div>
+    {% endfor %}
+</div>
+
+{% if numbers.has_next %}
+<a class="infinite-more-link" href="?page={{ numbers.next_page_number }}">More</a> {% endif %}
+
+<div class="loading" style="display: none;">
+    Loading...
+</div>
+<script>
+    var infinite = new Waypoint.Infinite({
+        element: $('.infinite-container')[0],
+        onBeforePageLoad: function() {
+            $('.loading').show();
+        },
+        onAfterPageLoad: function($items) {
+            $('.loading').hide();
+        }
+    });
+</script>

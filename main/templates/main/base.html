@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=yes,shrink-to-fit=no">
+    <meta name="theme-color" content="#0a0f0c">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/new/header.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/new/nav_bar.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/new/footer.css' %}" type="text/css">
+
+
+
+
+    <!-- title, description, etc-->
+    {% block head %}{% endblock %}
+    <script src="{% static 'scripts/safari-smooth.js' %}"></script>
+    {% block auto-scroll %}
+    <script src="{% static 'scripts/auto-scroll.js' %}"></script>
+    {% endblock %}
+    <script src="{% static 'scripts/sidebar-opener.js' %}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT9V3VSBNV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-YT9V3VSBNV');
+    </script>
+</head>
+
+<body>
+
+    {% block header %}
+    <header onclick="closeNav()">
+        <h2><big><big><strong><a href="{% url 'home' %}">Sushi&nbsp;Book</a></strong></big></big>
+        </h2>
+    </header>
+    {% endblock %}
+    {% include 'main/header_short.html' %}
+    {% include 'main/nav_bar.html' %}
+
+    <div class="main-content" onclick="closeNav()">
+        <section>
+            {% block content %}
+            <div></div>
+            {% endblock %}
+            <!---->
+            {% block media_bar %}
+            <div class="media_bar" id="media">
+                <h3>Chapters:</h3>
+                <ul>
+                    <li><b><a href="{% url 'basics/rice' %}">Basics:</a></b><br>
+                        <a href="{% url 'basics/rice' %}">Sushi Rice</a><br>
+                        <a href="{% url 'basics/vinegar' %}">Sushi Vinegar</a><br>
+                        <br>
+                    </li>
+                    <li><b><a href="{% url 'sauces/teriyaki' %}">Sauces:</a></b><br>
+                        <a href="{% url 'sauces/teriyaki' %}">Teriyaki</a><br>
+                        <a href="{% url 'sauces/ponzu' %}">Ponzu</a><br>
+                        <a href="{% url 'sauces/spicy-mayo' %}">Spicy Mayo</a><br>
+                        <a href="{% url 'sauces/den-miso' %}">Miso Glaze</a><br>
+
+                        <br>
+                    </li>
+                    <li><b><a href="{% url 'tools/cutting-board' %}">Tools Care:</a></b><br>
+                        <a href="{% url 'tools/cutting-board' %}">Cutting Board</a><br>
+                        <a href="{% url 'tools/hangiri' %}">Hangiri</a><br>
+                        <a href="{% url 'tools/knife' %}">Knife Care</a><br>
+                        <a href="{% url 'tools/makisu' %}">Makisu</a><br>
+                        <br>
+                    </li>
+                    <li><b><a href="{% url 'kids/raw-fish' %}">Sushi & Kids:</a></b><br>
+                        <a href="{% url 'kids/raw-fish' %}">Raw Fish</a><br>
+                        <a href="{% url 'kids/recipes' %}">Recipes For Kids</a><br>
+                    </li>
+                </ul>
+            </div>
+            {% endblock %}
+        </section>
+        {% block calculator %}{% endblock %} {% block pre_footer %}{% endblock pre_footer %} {% block footer %}
+    </div>
+    {% include 'main/footer.html' %}
+
+    {% endblock %}
+
+</body>
+
+</html>

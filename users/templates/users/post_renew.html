@@ -1,0 +1,95 @@
+{% extends 'base.html' %}{% load static %}
+
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/post.css' %}" type="text/css">
+
+<link rel="stylesheet" href="{% static 'css/users_app/create_post.css' %}" type="text/css"> {% endblock head %} {% block navbar_links %}
+<li style="float: right;">
+    <a href="{{ user.profile.get_absolute_url }}">Profile</a>
+</li>
+{% endblock navbar_links %}{% block content %}
+
+<div class="create_post_card_wrap">
+    <a class="closebtn" href="javascript:javascript:history.go(-1)">
+        <span class="hoverable">
+        <span class="hoverable__main">&times;</span>
+        <span class="hoverable__tooltip">Cancel</span>
+        </span>
+    </a>
+    <div class="content">
+        <h3 class="title">Post editing.</h3>
+        <hr>
+    </div>
+
+
+    <form action="" method="post">
+        {% csrf_token %}
+        <label>Title:</label>
+        <input type="text" name="title" maxlength="200" id="id_title" placeholder="Add header (optional)." value="{{ postinst.title }}">
+        <label>Story:</label><br>
+        <textarea name="story" maxlength="1000" id="id_story" rows="4" cols="30" placeholder="What would you like to share?">{{ postinst.story }}</textarea>
+        <input class="btn" type="submit" value="Save" />
+
+        <!--When the user clicks on div, open the popup-->
+        <div class="popup" onclick="post_del()">
+            <span class="popuptext" id="popuptext">
+                <p>Confirm</p>
+                <input class="btn_red" type="button" value="Yes Delete" onclick="location.href='{% url 'delete_post' postinst.id %}';">
+                <input class="btn" type="button" value="No">
+            </span>
+        </div>
+        <span class="popup_worning_text" id="popup_worning_text"></span>
+        <script>
+            function post_del() {
+                var popup = document.getElementById("popuptext");
+                popup.classList.toggle("show");
+            }
+        </script>
+        <!---->
+        <input class="btn_red" type="button" value="Delete" onclick="post_del()">
+        </input>
+
+    </form>
+    {% if postinst.picture %}
+    <img class="post_picture" src="{{ postinst.picture.url }}" /> {% endif %}
+
+    {% if postinst.postcomment_set.all %}
+        <div style="padding: 20px;">
+
+        comments:
+            <br>
+            {% for comment in postinst.postcomment_set.all %}
+                <br>
+                <a style="text-decoration: none;" href="{{ comment.profile.get_absolute_url }}">
+                    {% if comment.profile.avatar %}
+                        <img style="width: 20px; height: 20px; border-radius: 50%; " src="{{ comment.profile.avatar.url }}" alt="profile picture" />
+                    {% endif %}
+
+
+                    {% if comment.profile.first_name %}
+                        {{ comment.profile.first_name }}
+                    {% else %}
+                        {{ comment.profile }}
+                    {% endif %}
+                </a> 
+                <p>
+                    <small>
+                        {{ comment.description }}
+                        <br>
+                        <small style="color: gray;">{{ comment.date }}</small>
+                    </small>
+                </p>
+                
+                <br>
+            {% endfor %}
+        </div>
+    {% endif %}
+    
+    
+
+</div>
+
+
+
+
+{% endblock content %} {% block media_bar %} {% endblock media_bar %}

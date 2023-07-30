@@ -1,0 +1,95 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/kids.css' %}" type="text/css">
+<title>Sushi & Kids | Sushi Book</title>
+<meta name="description" content="Sushi Recipes For Kids. Cook one of these kids sushi recipes and open the world of sushi for your child.">
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1><small>Sushi Recipes For Kids</small></h1>
+        <img src="{% static 'img/book/kids/recipes.jpg' %}" alt="A girl eating sushi">
+    </div>
+
+    <div class="book_content">
+        <h4 style="color: rgb(0, 100, 10);">Question
+        </h4>
+
+        <h3>
+            My baby wants sushi. but I don't <a href="{% url 'kids/raw-fish' %}">risk giving raw fish</a> to my child. What are the alternatives?
+        </h3>
+
+        <h4 style="color: rgb(0, 100, 10);">Answer
+        </h4>
+
+        <h3>
+            Sushi is a very versatile and healthy product. The basis of sushi is rightly rice, the filling can be any that is pleasant and suitable for your child.
+            <br><br> ​​Many sushi restaurants on the children's menu have sushi with chicken schnitzel (the most popular type), steamed salmon, sweet vegetables or avocado. The choice is great! it can be sweet eel or just a Japanese omelet (tamago).
+            <br><br> Cook one of these fun baby sushi fillings and open the world of sushi for your child.
+            </h4>
+
+            <h4 style="color: rgb(0, 100, 10);">fillings
+            </h4>
+            <h3>
+                <small>a.</small> Baby sushi with Avocado
+            </h3>
+            <p>
+                Wash the avocado, peel, cut into strips. You can add cucumber, carrots. Crispy vegetables go well with fatty avocados.
+            </p>
+
+            <h3>
+                <small>b.</small> Baked or steamed fish
+            </h3>
+            <p>
+                Take salmon fillet (50g per roll), check for bones, can be cut into arbitrary pieces. Cook in a steamer or oven for 10 minutes, you can use a microwave for 1-2 minutes per 100g of fish (you need a heat-resistant plastic box, but make sure that steam can
+                escape from the box).
+                <br> wait until the fish has cooled down and drain the released juice. stir fish with Japanese mayonnaise and teriyaki (or your favorite sauces). sauces need a little to enhance the taste and soften the mass. but it is possible without
+                them at all.
+                <br><br> Prepare strips of vegetables.<br> Goes very well with avocado, steamed or fried sweet potato. Crispy vegetables like cucumber add effect and contrast to taste.
+            </p>
+
+            <h3>
+                <small>c.</small> Chicken roll
+            </h3>
+            <p>
+                All kids love chicken schnitzel! <br> <br> Cut the chicken breast into slices, put a little wheat flour into a plate, break an egg into a bowl, pour pan-bread crumbs into another bowl or plate. salt the chicken slices, roll in flour, then
+                in an egg, then in breadcrumbs, pressing them a little. deep-fry the schnitzels or fry them in a skillet. <br> Let cool and cut into strips.
+                <br> Prepare the avocado strips.<br> If your child loves hot sweet sauce it will work great here! If not, use Japanese mayonnaise or other sauce he likes.
+            </p>
+
+
+            <h3>
+                Roll it up.
+            </h3>
+            <p>
+                <strong>
+                    1. Cook and fan the sushi rice
+                </strong>
+                <br> A good sushi recipe is all about the rice! <a href="{% url 'basics/rice' %}"> Read the Rice Chapter.</a>
+                <br><br>
+
+                <strong>
+                    2.Prep your fillings.
+                </strong>
+                <br> The filling can be with steamed or fried fish, vegetables, tamago, etc. You can choose from the examples above.
+                <br> Cut the filling into strips.
+                <br><br>
+
+                <strong>
+                    3. roll your sushi.
+                </strong>
+                <br> Use a sushi mat to start the process, keep rolling with your fingers or a sushi mat. Be sure to press down during the roll to make the sushi roll dense.
+                <br>
+                <br>
+
+                <strong>
+                    4. Cut the role.
+                </strong>
+                <br> 6 or 8 pieces ideal for rolls.
+                <br>
+                <br>
+            </p>
+            <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br><br><br>
+    </div>
+</div>
+<!---->{% endblock %}

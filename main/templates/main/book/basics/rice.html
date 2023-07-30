@@ -1,0 +1,97 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<title>Rice | Sushi Book</title>
+<meta name="description" content="Rice is the most important ingredient in the modern sense of sushi! Because in most cases, to make sushi, you just need to add fish or vegetables and nori to the rice! Favorite sauce... and you're just a king.">
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book_long">
+    <div class="book_header">
+        <h1>Sushi Rice</h1>
+        <img src="{% static 'img/book/basics/sushi_rice_book_header.jpg' %}" alt="Sushi rice">
+    </div>
+
+    <div class="book_content">
+        <h2>Good sushi starts with good rice!
+        </h2>
+        <p><strong>Rice is the most important ingredient in the modern sense of sushi! Because most of the time, to make sushi, you just need to add fish or vegetables and nori to the sushi rice. Favorite sauce and you're just a king.
+        </strong> </p>
+        <p class="cooking_info">
+            | cooking 45min |
+            <br> | for 3 sushi rolls you will need |
+        </p>
+        <p>
+            <p class="info">
+            </p>
+            <strong>
+            <li>Short-grain white rice<span class="info"> <small> - 1 cup/225g</small></span></li>
+        </strong>
+            <strong>
+            <li>water<span class="info"> <small> - 300ml</small></span></li>
+        </strong> Usually japanese or medium-grain California rice. This very starchy, plump rice with a firm texture labeled as "sushi rice" may vary in quality, price, taste and texture, feel free to try a few different brands to see which
+            one you like best.
+            <br>
+            <span class="warning">
+            "Regular" long grain rice is not sticky enough for sushi and therefore cannot be used.
+        </span>
+            <br>
+            <p class="info">
+                | for rice vinegar seasoning |
+            </p>
+            <strong>
+            <li>Japanese Rice vinegar<span class="info"><small> - 30ml</small></span></li>
+        </strong> Usually sold in the same place as sushi rice.<br> Adds a rich, savory flavor that complements the fish.
+            <strong>
+            <li>Sugar<span class="info"><small> - 20g</small></span></li>
+        </strong>
+            <strong>
+            <li>Salt or sea salt<span class="info"><small> - 5g</small></span></li>
+        </strong>
+            <strong>
+            <li>Kombu - Dried Seaweed<span class="info"><small> - 3x3cm square</small></span></li>
+        </strong> (optional): gives the rice a traditional umami flavor
+        </p>
+        <h3>
+            Cooking the rice
+        </h3>
+        <p>
+            Rinse the rice (1 cup = 3 rolls) under running water for 1-2 minutes until the starch stops coming out of it. For best results, let the water soak into the rice (15-20 minutes) to soften.
+            <br> After washing the rice, drain all the water and place rice in a pot, add 10% more water (in cups or in milliliters) than rice - 300ml of water for 1 cup or 225g of rice. Do not add too much water, or the rice will be overcooked (seasoning
+            with vinegar will add liquid).
+            <br>
+            <br> Cook over high heat for about 5 minutes, stir the rice every 2-3 minutes, so that it does not stick and burn. When the water boils, lower the heat to low and close the pot (no need to stir or open). after 15 minutes, turn off the heat
+            and leave the rice covered for another 20 minutes. the rice will absorb moisture evenly, you don't have to worry or open the lid.
+        </p>
+        <p class="info">
+            While the rice is cooking, make the vinegar seasoning.
+        </p>
+        <p>
+            The seasoning can be stored at room temperature. I recommend сooking the vinegar in advance and using it as needed. As a bonus, the cooled vinegar will help the rice cool down faster.
+        </p>
+
+        <h3>Make vinegar seasoning</h3>
+        <p>
+            Mix together vinegar, salt, sugar and combo in a small pot, on medium heat (do not boil) until the salt and sugar are completely dissolved.
+            <br> If the vinegar cools down, that's okay, it will help cool the rice faster.
+        </p>
+        <h3>Taking out the rice
+        </h3>
+        <p>
+            Use only a wooden or thermo-plastic spoon. The metal spoon will damage the rice and may also react with the vinegar, which we will add later. Second, do not scrape the rice from the bottom of the pot. If it comes out easily, that's fine. Otherwise, don't
+            use it. The rice will taste bad.
+            <br> Put it in a wooden or plastic bowl to mix with vinegar and cool.
+        </p>
+        <h3>Seasoning the rice</h3>
+        <p>
+            pour the seasoning on rice and mix gently.
+            <br> Let the rice cool to room temperature or higher. but don't put the rice in the refrigerator - it will damage it.
+        </p>
+        <p class="info">
+            You may be wondering why the Japanese season rice with vinegar. In fact, it goes back to the origins of sushi. Sushi literally means sour taste. Historically, people stored fish by wrapping it in fermented rice. When they were ready to eat the fish, the
+            fermented rice was thrown away. Sometime between 1300 and 1500, the Japanese gradually stopped using fermented rice and instead added vinegar to the rice to further extend the shelf life. The vinegar made the rice taste good, so they started
+            eating fish and rice together, which became today's sushi. Chilled fish can be stored well these days, but centuries of umami flavor of sushi rice with added vinegar remained.
+            <br>
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br>
+    </div>
+</div>
+<!---->{% endblock %}

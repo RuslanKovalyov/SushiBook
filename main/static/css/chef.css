@@ -1,0 +1,167 @@
+body {
+    background-color: #0a0f0c10;
+    line-height: 1.5;
+}
+
+header {
+    background-color: #0a0f0cfa;
+    font-family: Georgia;
+    font-size: 28px;
+    color: white;
+    padding: 16px;
+    padding-top: 0px;
+    padding-bottom: 0px;
+    height: 100vh;
+    background-image: url(../img/job/head.jpg);
+    -o-background-size: cover;
+    -moz-background-size: cover;
+    -webkit-background-size: cover;
+    background-size: cover;
+    background-position: 50% 50%;
+}
+
+.country_dropdown_content {
+    display: none;
+    position: absolute;
+    right: 10px;
+    background-color: #0a0f0ce3;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.country_dropdown_content a {
+    float: none;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.country_dropdown-content a:hover {
+    background-color: #002000;
+}
+
+.country_dropdown:hover .country_dropdown_content {
+    display: block;
+}
+
+.search {
+    margin: 5px;
+    margin-top: 50px;
+}
+
+#myInput {
+    background-image: url(../img/searchicon.png);
+    background-position: 10px 12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.job_card {
+    text-align: left;
+    background-color: #fff;
+    color: rgb(0, 30, 0);
+    font-size: 24px;
+    font-family: Georgia;
+    margin: 3%;
+    margin-top: 50px;
+    border: 1px solid #ddd;
+    border-radius: 15px;
+    padding-top: 15px;
+    padding-bottom: 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.job_card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: rgb(0, 30, 0);
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+    border-radius: 3px;
+    margin-top: 5px;
+}
+
+.job_card img {
+    float: left;
+    width: 150px;
+    margin: 5px;
+    margin-right: 20px;
+    margin-left: 15px;
+    object-position: 50% 50%;
+    border-radius: 100%;
+}
+
+.card_date {
+    font-size: 14px;
+    padding: 0px;
+    margin: 0px;
+    padding-right: 15px;
+}
+
+.more .content {
+    visibility: hidden;
+    display: none;
+}
+
+.active button {
+    visibility: hidden;
+    display: none;
+}
+
+.closer {
+    float: right;
+    padding: 5px;
+    color: white;
+    background-color: rgb(100, 0, 0);
+    cursor: pointer;
+    width: min-content;
+    font-size: 18px;
+    border-radius: 3px;
+    margin-right: 10px;
+}
+
+.contact {
+    background-color: rgb(100, 255, 100);
+    border-radius: 3px;
+    padding: 5px;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-radius: 3px;
+    text-decoration: none;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+}
+
+.contact:hover {
+    background-color: rgb(0, 204, 102);
+}
+
+@media (max-width: 567px) {
+    .job_card {
+        margin: 3px;
+        margin-top: 20px;
+        font-size: 20;
+        padding-top: 10px;
+        padding-bottom: 15px;
+    }
+    .job_card img {
+        max-width: 100px;
+        margin-right: 10px;
+        margin-left: 5px;
+    }
+    header {
+        font-size: 24px;
+        background-image: url(../img/job/head-mobi.jpg);
+    }
+}

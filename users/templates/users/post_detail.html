@@ -1,0 +1,35 @@
+{% extends "base.html" %} {% load static %}
+
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/registration.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/post.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
+<link rel="stylesheet" href="{% static 'css/users_app/create_post.css' %}" type="text/css"> {% endblock head %} {% block navbar_links %}
+<li style="float: right;">
+    <a href="{% url 'posts' %}">Posts</a>
+</li>
+{% endblock navbar_links %} {% block content %}
+
+
+
+<div class="post_card_wrap">
+    <a class="closebtn" href="javascript:javascript:history.go(-1)">&times;</a>
+    <div class="content">
+        <a href="{{ post.author.get_absolute_url }}">
+            <img class="avatar" src="{{ post.author.avatar.url }}" alt="profile picture" /></a>
+        <a class="author" href="{{ post.author.get_absolute_url }}">{{ post.author.first_name | default:post.author }} {{ post.author.last_name | default:'' }}
+        <br><span class="position">{{ post.author.current_position | default:'' }}</span></a>
+        <hr>
+        <h3 class="title">{{ post.title }}</h3>
+        <h5 class="story">
+            {{ post.story }}
+        </h5>
+    </div>
+
+    {% if post.picture %}
+    <img class="post_picture" src="{{ post.picture.url }}" /> {% endif %} {% if user.is_authenticated %}
+    <a href="{% url 'post-like' post.id %}">like</a> {% endif %}
+</div>
+
+{% endblock content%}

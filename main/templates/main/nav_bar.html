@@ -1,0 +1,52 @@
+<div class="bar">
+
+    <script>
+        function openNav() {
+            document.getElementById("side").style.width = "270px";
+            document.getElementById("side_bar_padding").style.marginLeft = "270px";
+
+        }
+        function closeNav() {
+            document.getElementById("side").style.width = "0";
+            document.getElementById("side_bar_padding").style.marginLeft = "0px";
+
+        }
+    </script>
+
+    <div class="nav">
+        <a class="mobile_screen" onclick="openNav()">&#9776; Menu</a>
+        <!-- Button -->
+        <span class="pc_screen">
+            <a {% if request.path == "/"%}style="color:orangered;" {% endif %}            href="{% url 'book' %}">Book</a>
+            <a {% if request.path == "/Community"%}style="color:orangered;" {% endif %}       href="{% url 'community' %}">Community</a>
+            <a {% if request.path == "/jobs"%}style="color:orangered;" {% endif %}             href="{% url 'jobs' %}">Jobs</a>
+            <a {% if request.path == "/News"%}style="color:orangered;" {% endif %}            href="{% url 'news' %}">News</a>
+            <a {% if request.path == "/Page/Hangiri"%}style="color:orangered;" {% endif %}   href="{% url 'tools/hangiri' %}">Tools</a>
+            <a {% if request.path == "/Insider"%}style="color:orangered;" {% endif %}         href="{% url 'insider/all' %}">Insider</a>
+            <a {% if request.path == "/Page/Recipes-For-Kids"%}style="color:orangered;" {% endif %}    href="{% url 'kids/recipes' %}">Sushi&nbsp;&&nbsp;Kids</a>
+        </span>
+
+        <span style="float: right;">
+            <!-- Login -->
+            {% if user.is_authenticated %}
+                <a href="{{ user.profile.get_absolute_url }}">Hi, {{ user.profile.first_name | default:user.profile }}</a> 
+            {% else %}
+                <a href="{% url 'login' %}">Sign in</a> 
+            {% endif %}
+        </span>           
+    </div>
+
+    <div class="side" id="side">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <!-- Button -->
+        <a {% if request.path == "/"%}style="color:orangered;" {% endif %}            href="{% url 'book' %}">Book</a>
+        <a {% if request.path == "/Community"%}style="color:orangered;" {% endif %}       href="{% url 'community' %}">Community</a>
+        <a {% if request.path == "/jobs"%}style="color:orangered;" {% endif %}             href="{% url 'jobs' %}">Jobs</a>
+        <a {% if request.path == "/News"%}style="color:orangered;" {% endif %}            href="{% url 'news' %}">News</a>
+        <a {% if request.path == "/Page/Hangiri"%}style="color:orangered;" {% endif %}   href="{% url 'tools/hangiri' %}">Tools</a>
+        <a {% if request.path == "/Insider"%}style="color:orangered;" {% endif %}         href="{% url 'insider/all' %}">Insider</a>
+        <a {% if request.path == "/Page/Recipes-For-Kids"%}style="color:orangered;" {% endif %}    href="{% url 'kids/recipes' %}">Sushi&nbsp;&&nbsp;Kids</a>
+        <br>
+    </div>
+
+</div>

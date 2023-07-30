@@ -1,0 +1,94 @@
+{% extends 'base.html' %}{% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/registration.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/post.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
+<link rel="stylesheet" href="{% static 'css/users_app/create_post.css' %}" type="text/css"> {% endblock head %} {% block navbar_links %}
+<li style="float: right;">
+    <a href="{% url 'community' %}">Community</a>
+</li>
+{% endblock navbar_links %}{% block content %}
+
+<!--PROFILE-->
+<div class="profle_card_wrap">
+    <!--images-->
+    <div class="profile_card_images">
+        <img class="profile_background" alt="background" src="{{ user.profile.profile_background.url }}" />
+        <img class="profile_avatar" alt="profile picture" src="{{ user.profile.avatar.url }}" />
+    </div>
+    <!--info-->
+    <div class="profile_info">
+        {% if profile_form.errors %}{{ profile_form.errors }}<a class="error" href="{% url 'edit_profile' %}"> >> Edit profile</a> {% endif %}
+        <!---->
+        {% if user.profile.first_name %}
+        <h1>{{ user.profile.first_name }} {{ user.profile.last_name | default:'' }}</h1>
+        {% else %}
+        <h4>{{ user.email }}</h4>
+        {% endif %}
+        <p>{{ user.profile.current_position | default:'' }}</p>
+        <p>{{ user.profile.credo | default:'' }}</p>
+        <div class="contacts">
+            <p>{% if user.profile.city %}<img class="ico" src="{% static 'img/ico/location-ico.png' %}">{{ user.profile.city | default:'' }}, {% endif %} {{ user.profile.country.name | default:'' }} <i class="flag2x {{ user.profile.country.flag_css }}"></i>
+                <br>{% if user.profile.phone %}<img class="ico" src="{% static 'img/ico/phone-ico.png' %}">{{ user.profile.phone }}{% endif %}</p>
+        </div>
+        <a class="btn_classic" href="{% url 'edit_profile' %}"> <img class="ico" src="{% static 'img/ico/edit-icon.png' %}">Edit profile</a>
+        <a class="btn_classic" href="{% url 'logout' %}">Log out</a>
+
+    </div>
+</div>
+
+<!--CREATE POST-->
+<script>
+    function open_url() {
+        location.href = "{% url 'create_post' %}";
+
+    }
+</script>
+
+<div onclick=open_url()>
+    <div class="create_post_card_wrap" id='smallbox'>
+        <div class="content">
+            <div style="display: inline-flex; ">
+                <a href="{{ user.profile.get_absolute_url }}"><img class="avatar" src="{{ user.profile.avatar.url }}" alt="profile picture" /></a>
+                <textarea style="margin-left: 20px; margin-top: 5px; padding: 10px;" name="story" maxlength="1000" id="id_story" rows="1" cols="70" placeholder="Write your post."></textarea>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--POSTS-->
+
+{% if user.profile.post_set.all %} {% for post in user.profile.post_set.all %}
+<div class="post_card_wrap">
+    <a class="closebtn" href="{{ post.get_absolute_url }}/renew/">
+        <span class="hoverable">
+        <span class="hoverable__main">&bull;&bull;&bull;</span>
+        <span class="hoverable__tooltip">Edit</span>
+        </span>
+    </a>
+    <div class="content">
+        <h3 class="title">{{ post.title }}</h3>
+        <h5 class="story">
+            {{ post.story }}
+        </h5>
+    </div>
+    {% if post.picture %}
+    <img class="post_picture" src="{{ post.picture.url }}" /> {% endif %}
+    <!--like-->
+    <div class="content">
+
+        <span style="color: gray; text-decoration: none; position: absolute; bottom: 15px;">&#128156; {% if post.postlike_set.all %}<small><small>{{ post.postlike_set.all|length }}</small></small> {% endif %}</span>
+        <a style="color: gray; text-decoration: none; position: absolute; bottom: 15px;" onclick=like(this) href="{{ post.get_absolute_url }}/like/ ">&#128420;</a>
+        <br> {% for like in post.postlike_set.all %} {% if user == like.user %}
+        <span style="color: gray; text-decoration: none; position: absolute; bottom: 15px;">&#128156;</span>
+        <!---->
+        {% endif %} {% endfor %}
+    </div>
+    <script>
+        function like(link) {
+            link.innerHTML = '&#128156;';
+            link.style.zIndex = "-1";
+        }
+    </script>
+</div>
+{% endfor %}{% endif %} {% endblock content %} {% block media_bar %} {% endblock media_bar %}

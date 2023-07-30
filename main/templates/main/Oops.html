@@ -1,0 +1,48 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+
+<title>Sushi Book</title>
+<meta name="description" content='The Sushi Book is a free sushi Guide and recipe hub, created and edited by Community. 
+Everyone can be a sushi master or chef if they love sushi and learn it!'>
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book">
+
+    <div class="book_header">
+        <h1>404</h1>
+        <img src="{% static 'img/404/book_header.jpg' %}" alt="Oops">
+    </div>
+
+    <div class="book_content">
+        <h2>Oops... A 404 page is what the user sees when they try to navigate to a non-existent page on the site.
+        </h2>
+
+        <h5>This can happen if you clicked on a broken link, the page was removed, or the URL was entered incorrectly...
+            <br> You can also help the project by contacting us at this link >> <a style="color: #00d09d; text-decoration: none;" \ href="https://api.whatsapp.com/send?phone=972528925522&text=Hi!">@developers.</a>
+        </h5>
+    </div>
+</div>
+
+{% endblock %} {% block pre_footer %}
+
+<!--People-->
+{% if people %}
+<h3 style="text-align: center;">Community</h3>
+<div class="row scrolling-wrapper-flexbox">
+    {% if people.has_previous %}
+    <a class="column next_btn" href="?page={{ people.previous_page_number }}">&#8592;</a> {% endif %} {% for person in people %}
+    <div class="column">
+        <div class="profle_card_small_preview" onclick="location.href='{{ person.get_absolute_url }}'">
+            <img class="small-avatar" src="{{ person.avatar.url }}" /> {% if person.first_name %}
+            <span class="text-on-image">
+                {{ person.first_name }} {{ person.last_name | default:'' }}
+            </span> {% endif %}
+        </div>
+    </div>
+    {% endfor %} {% if people.has_next %}
+    <!--<a class="column next_btn" href="?page={{ people.next_page_number }}">next&nbsp;&#8594;</a> -->
+    <a class="column next_btn" href="{% url 'community' %}">next&nbsp;&#8594;</a> {% endif %}
+    <!--Page {{ people.number }} of {{ people.paginator.num_pages }}-->
+</div>
+{% endif %} {% endblock pre_footer %}

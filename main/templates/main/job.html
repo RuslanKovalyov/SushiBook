@@ -1,0 +1,177 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0 , user-scalable=yes,shrink-to-fit=no">
+    <meta name="theme-color" content="#0a150e">
+    <link rel="shortcut icon" href="{% static 'img/favicon.ico' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/sidebar_menu.css' %}" type="text/css">
+    <link rel="stylesheet" href="{% static 'css/job.css' %}" type="text/css">
+    <title>Sushi jobs</title>
+    <meta name="description" content='Best staff and highest salary can only be found in the best sushi restaurants. The restaurants on the sushibook.com platform have the status of a community partner and are interested in maintaining the reputation of a great workplace with a great team and a decent salary. To learn more...'>
+    <script src="{% static 'scripts/safari-smooth.js' %}"></script>
+    <script src="{% static 'scripts/auto-scroll.js' %}"></script>
+    <script src="{% static 'scripts/sidebar-opener.js' %}"></script>
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-YT9V3VSBNV"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+
+        function gtag() {
+            dataLayer.push(arguments);
+        }
+        gtag('js', new Date());
+        gtag('config', 'G-YT9V3VSBNV');
+    </script>
+</head>
+
+<body>
+    <header>
+        <h2><big><big><strong><a href="{% url 'home' %}">Sushi&nbsp;Book</a></strong></big></big>
+        </h2>
+    </header>
+
+    <div class="navbar" id="navbar">
+        <ul>
+            <li>
+                <a onclick="openNav()">&#9776; Job</a>
+            </li>
+            <li style="float: right;">
+                <div class="country_dropdown">
+                    <a class="country_dropbtn">Country</a>
+                    <div class="country_dropdown_content">
+                        <a href="{% url 'job' %}">All countries</a>
+                        <a href="{% url 'job/israel' %}">Israel</a>
+                        <a href="{% url 'job/usa' %}">USA</a>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+
+
+    <div id="mySidebar" class="sidebar">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="{% url 'home' %}">Book</a>
+        <a href="{% url 'community' %}">Community</a>
+        <a {% if request.path == "/Job"%}style="color:orangered;" {% endif %} href="{% url 'job' %}">Job</a>
+        <a href="{% url 'news' %}">News</a>
+        <a href="{% url 'tools/hangiri' %}">Tools</a>
+        <a href="{% url 'insider/all' %}">Insider</a>
+        <a href="{% url 'kids/recipes' %}">Sushi&nbsp;&&nbsp;Kids</a> {% if user.is_authenticated %}
+        <br>
+        <a href="{{ user.profile.get_absolute_url }}">Welcome, {{ user.profile.first_name | default:user.profile }}</a> {% else %}
+        <a href="{% url 'posts' %}">Sign in</a> {% endif %}
+    </div>
+
+    <div class="main-content">
+        <section>
+
+            <div id="card">
+                <div class="search">
+                    <input type="text" id="myInput" onkeyup="searchFunction()" placeholder="City search..." title="Type in a city">
+                </div>
+                {% for el in job %}
+                <search_for>
+                    <a style="visibility: hidden;">{{ el.city }}</a>
+                    <div class="job_card">
+                        <p><big style="color:rgb(0, 100, 0);"><strong>{{ el.position }}</strong></big><br></p>
+                        <img alt="workplace" src="{{ el.picture.url }}">
+
+                        <p>{{ el.company_name }} <br>{{ el.country }} - {{ el.city }}<br> <span style="background-color: rgba(0, 77, 29, 0.164); padding-inline: 7px; border-radius: 3px;">{{ el.salary }}</span>
+
+                            <div class="more">
+                                <button>...read&nbsp;more</button><br>
+                                <ul class="content">
+                                    <li style="padding-top: 15px;"><span style="font-weight: bold;">Responsibilities&nbsp;:</span><br>{{ el.Responsibilities }}</li>
+                                    <li style="padding-top: 15px;"><span style="font-weight: bold;">Qualifications&nbsp;:</span><br>{{ el.Qualifications }}</li>
+                                    <li style="padding-top: 15px;"><span style="font-weight: bold;">address&nbsp;:</span><br>{{ el.address }}</li>
+                                    <li style="padding-top: 15px;"><span style="font-weight: bold;">description&nbsp;:</span><br>{{ el.description }}</li>
+                                    <br>
+                                    <a class="contact" href="https://api.whatsapp.com/send?phone=972528925522&text=Hi! Liked one of the vacancies. My name is ...">Contact</a>
+                                </ul>
+                            </div>
+
+                        </p>
+                        <!--<p class="card_date">{{ el.date }}</p>-->
+                    </div>
+                </search_for>
+                {% endfor%}
+
+                <h2 id="no_elements" style="display: none; color: chocolate;"><big><strong>No offers found.</strong></big> </h2>
+            </div>
+
+            <div class="media_bar" id="media">
+            </div>
+        </section>
+    </div>
+
+
+
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("card");
+        var btns = header.getElementsByClassName("more");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function() {
+                //var current = document.getElementsByClassName("active");
+                //current[0].className = current[0].className.replace(" active", "");
+                this.className = "active";
+            });
+        }
+    </script>
+
+    <script>
+        function searchFunction() {
+            var input, filter, card, ta, a, i, txtValue, counter;
+            counter = 0;
+            input = document.getElementById("myInput");
+            filter = input.value.toUpperCase();
+            card = document.getElementById("card");
+            ta = card.getElementsByTagName("search_for");
+            for (i = 0; i < ta.length; i++) {
+                a = ta[i].getElementsByTagName("a")[0];
+                txtValue = a.textContent || a.innerText;
+                if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                    ta[i].style.display = "";
+                    counter += 1;
+                } else {
+                    ta[i].style.display = "none";
+                }
+            }
+            if (counter) {
+                document.getElementById("no_elements").style.display = "none"
+            } else {
+                document.getElementById("no_elements").style.display = ""
+            }
+        }
+    </script>
+
+    <footer>
+        <div>
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fsushibook.com" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img src="{% static 'img/ico/facebook.png' %}" alt="facebook"></a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://sushibook.com" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img src="{% static 'img/ico/linkedin.png' %}" alt="linkedin"></a>
+            <a href="whatsapp://send?text=https://sushibook.com" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img src="{% static 'img/ico/whatsapp.png' %}" alt="whatsapp"></a>
+            <a href="https://twitter.com/share?url=https://sushibook.com" onclick="window.open(this.href, 'mywin', 'left=20,top=20,width=500,height=500,toolbar=1,resizable=0'); return false;"><img src="{% static 'img/ico/twitter.png' %}" alt="twitter"></a>
+            <br>
+            <a href="{% url 'about' %}">About</a>
+            <a href="{% url 'development' %}">Services</a>
+            <a href="{% url 'partners' %}">Partners</a>
+            <a href="{% url 'development' %}">Contacts</a>
+            <P><small><a style="text-decoration: none;" href="{% url 'home' %}">English</a> | 
+            <a style="text-decoration: none;" href="{% url 'home' %}">sushibook.com © 2021</a></small></p>
+        </div>
+        <p class="credits">
+            Creation & support by
+            <a class="link" href="https://api.whatsapp.com/send?phone=972528925522&text=Hi!">@Ruslan K.</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

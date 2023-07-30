@@ -1,0 +1,85 @@
+{% extends 'main/base.html' %} {% load static %}
+
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/sauces.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/calc.css' %}" type="text/css">
+<script src="{% static 'scripts/calc/ponzu_calc.js' %}" async></script>
+<title>Ponzu Sauce | Sushi Book</title>
+<meta name="description" content="The classic Ponzu is made by heating mirin, rice vinegar, katsuobushi (bonito tuna) flakes and seaweed (kombu) over low heat. After that, the liquid is cooled, filtered, citrus juice is added to it: yuzu, lemon, etc.">
+<!---->{%endblock %}
+
+<!---->{% block content %}
+<div class="book_long">
+
+    <div class="book_header">
+        <h1>Ponzu</h1>
+        <img src="{% static 'img/book/sauces/ponzu.jpg' %}" alt="Ponzu sauce">
+    </div>
+
+    <div class="book_content">
+        <p class="info">
+            Author Ruslan Kovalev
+        </p>
+        <h2>Ponzu - Japanese citrus dipping sauce.
+        </h2>
+
+        <h3>
+            The classic Ponzu is made by heating mirin, rice vinegar, katsuobushi (bonito tuna) flakes and seaweed (kombu) over low heat. After that, the liquid is cooled, filtered, citrus juice is added to it: yuzu, lemon, etc. A more popular recipe for ponzu with
+            soy sauce. The original name of this variety is ponzu shoyu, in restaurants it is simply ponzu.
+        </h3>
+        <p class="info">
+            Introducing my favorite spicy variety. The recipe was developed by my teacher - <a href="https://www.facebook.com/100001315087725">Tzipi&nbsp;Gershonovich</a>.
+        </p>
+        <p class="cooking_info">
+            | cooking 5min |
+        </p>
+
+        <p>
+            <strong>INGREDIENTS</strong>
+            <strong>
+                    <li>Soy sauce<span class="info"><small> - 100ml</small></span></li>
+                </strong>
+            <strong>
+                    <li>Orange juice<span class="info"><small> - 50ml</small></span></li>
+                </strong>
+            <strong>
+                    <li>Yuzu juice<span class="info"><small> - 30ml</small></span></li>
+                </strong>
+            <strong>
+                    <li>Lemon juice<span class="info"><small> - 30ml</small></span></li>
+                </strong>
+            <strong>
+                    <li>Chili oil<span class="info"><small> - 15ml</small></span></li>
+                </strong>
+            <strong>
+                    <li>Sesame oil<span class="info"><small> - 20ml</small></span></li>
+                </strong>
+            <strong>
+                    <li>Ginger root<span class="info"><small> ~ 1/3pc (root)</small></span></li>
+                </strong>
+        </p>
+        <p>
+            <strong>INSTRUCTIONS</strong><br><br> Peel the ginger, chop it with a knife and grind in a blender, add citrus juices and beat in a blender for another minute. <br> Remove the ginger fibers from the mixture by filtering it through a fine sieve
+            and add all other ingredients to the remaining juice. Mix everything well and store in the refrigerator for 3-4 days. Shake well before serving.
+        </p>
+
+        <p class="info">
+            Another simple punzu sauce recipe is equal parts: soy sauce x 2, mirin, lime juice, lemon juice, rice vinegar, dashi stock (or dashi powder with water). This recipe is great if you don't have yuzu, or if you don't like spicy.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br>
+    </div>
+</div>
+<!---->{% endblock %}
+
+<!---->{% block calculator%}
+<div class="calc">
+    <h3>Magic Calculator by <a href="{% url 'home' %}">Sushi&nbsp;Book</a></h3>
+    <h4>Calculate "Ponzu" recipe based on the main ingredient "soy sauce"</h2>
+        <strong>Soy sauce in milliliters:</strong> <input type="number" id="myNumber" value="100">
+        <button class="btn" type="button" onclick="writ()">Calculate</button>
+        <table id='tbl' border=1></table>
+        <script>
+            writ();
+        </script>
+</div>
+<!---->{% endblock %}

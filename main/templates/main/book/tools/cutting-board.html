@@ -1,0 +1,38 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/tools.css' %}" type="text/css">
+<title>Cutting Board | Sushi Book</title>
+<meta name="description" content="Plastic cutting boards are easier to sanitize. But cutting on them also leaves lots of grooves where bacteria can hide. For plastic cutting boards, you should use a chlorine-based sanitize.">
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book">
+    <div class="book_header">
+        <h1>Cutting Board</h1>
+        <img src="{% static 'img/book/tools/cutting_board.jpg' %}" alt="cutting_board">
+    </div>
+
+    <div class="book_content">
+        <h3>Caring for Maple Wood
+        </h3>
+
+        <p>
+            Though durable, untreated Maple wood requires specific care to maintain its longevity. Hand-wash only with a mild washing up liquid, and warm water. For wood cutting boards, you should use a quaternary ammonium sanitizer Rub dry thoroughly with a clean
+            cloth to prevent water marks. Treat the wood regularly by rubbing in a little mineral oil.
+        </p>
+
+        <h3>Plastic cutting boards
+        </h3>
+        <p>
+            Are easier to sanitize. But cutting on them also leaves lots of grooves where bacteria can hide. For plastic cutting boards, you should use a chlorine-based sanitize.
+        </p>
+
+        <h3>When To Replace
+        </h3>
+        <p>
+            At some point, scrubbing and sanitizing might not be enough. When your cutting board has accumulated a lot of deep grooves from repeated use, you probably need to replace it. The more grooves it has, and the bigger they are, the more area is available
+            for trapping moisture and giving bacteria a place to proliferate.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br>
+    </div>
+</div>
+<!---->{% endblock %}

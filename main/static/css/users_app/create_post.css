@@ -1,0 +1,87 @@
+.create_post_card_wrap {
+    margin: auto;
+    margin-top: 30px;
+    padding: 10px;
+    font: 600 24px/26px 'Open Sans', sans-serif;
+    background-color: rgb(255, 255, 255);
+    color: rgb(0, 0, 0);
+    width: 98%;
+    max-width: 600px;
+    height: min-content;
+    position: relative;
+    border: 1px solid #3333;
+    border-radius: 10px;
+    box-shadow: 3px 3px 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.small_box_create_post {
+    padding: 0px;
+}
+
+.create_post_card_wrap .avatar {
+    background-color: white;
+    object-fit: cover;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+.create_post_card_wrap .author {
+    font: 500 24px/26px 'Open Sans', sans-serif;
+    position: absolute;
+    top: 34px;
+    left: 80px;
+    font-size: medium;
+    text-decoration: none;
+}
+
+.create_post_card_wrap .author .position {
+    font-size: small;
+    color: rgba(40, 70, 40);
+}
+
+.create_post_card_wrap .title {
+    text-align: center;
+    margin: 10px;
+}
+
+.create_post_card_wrap .story {
+    color: rgba(50, 50, 50);
+    margin: 10px;
+}
+
+.create_post_card_wrap .post_picture {
+    width: 100%;
+    margin-bottom: 30px;
+}
+
+.create_post_card_wrap label {
+    padding-left: 20px;
+    color: #001812;
+    font-size: 12px;
+    text-transform: uppercase;
+}
+
+.create_post_card_wrap label {
+    color: #0b110fcc;
+    font-size: x-small;
+}
+
+.create_post_card_wrap input,
+.create_post_card_wrap input.placeholder,
+.create_post_card_wrap textarea {
+    margin: auto;
+    margin-bottom: 20px;
+    width: 98%;
+    font-size: 22px;
+    display: block;
+    border: none;
+    border-radius: 5px;
+    padding: 15px 20px;
+    background: #0a490017;
+}
+
+.file-input {
+    cursor: pointer;
+    font-style: italic;
+}

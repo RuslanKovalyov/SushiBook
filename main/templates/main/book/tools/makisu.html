@@ -1,0 +1,32 @@
+{% extends 'main/base.html' %} {% load static %}
+<!---->{% block head %}
+<link rel="stylesheet" href="{% static 'css/tools.css' %}" type="text/css">
+<title>Makisu | Sushi Book</title>
+<meta name="description" content="Makisu are most commonly used to make a kind of rolled sushi called makizushi, but they are also used to shape other soft foods such as omelets, and to squeeze excess liquid out of food. A makisu is usually 25 cm × 25 cm, although this may vary. There are two variations, one with thick bamboo strips and the other with thin.">
+<!---->{%endblock %}
+<!---->{% block content %}
+<div class="book">
+    <div class="book_header">
+        <h1>Makisu</h1>
+        <img src="{% static 'img/book/tools/makisu.jpg' %}" alt="Makisu">
+    </div>
+
+    <div class="book_content">
+        <h2>A makisu is a mat woven from bamboo and cotton string that is used in food preparation
+        </h2>
+
+        <p>
+            Makisu are most commonly used to make a kind of rolled sushi called makizushi, but they are also used to shape other soft foods such as omelets, and to squeeze excess liquid out of food. A makisu is usually 25 cm × 25 cm, although this may vary. There
+            are two variations, one with thick bamboo strips and the other with thin. Experts consider the thick mat more versatile, while the thin mat is designed specifically for makizushi. These mats come in various sizes.
+        </p>
+
+        <h3>After use
+        </h3>
+        <p>
+            A makisu should be thoroughly air dried to avoid the growth of bacteria and fungi. Some cooks cover the makisu with plastic film before use to reduce the cleaning effort. This is especially necessary for producing uramaki, a kind of maki sushi with the
+            rice on the outside of the roll. Makisu are inexpensive so people can simply dispose of them after use.
+        </p>
+        <br><a href="{% url 'home' %}" class="copyright">sushibook.com © 2021</a><br>
+    </div>
+</div>
+<!---->{% endblock %}

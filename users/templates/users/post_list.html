@@ -1,0 +1,96 @@
+{% extends "base.html" %} {% load static %} {% block head %}
+<link rel="stylesheet" href="{% static 'css/users_app/registration.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/profile.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/users_app/post.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'flags/sprite.css' %}">
+<link rel="stylesheet" href="{% static 'css/users_app/create_post.css' %}" type="text/css"> {% endblock head %} {% block navbar_links %}
+<li style="float: right;">
+    <a href="{{ user.profile.get_absolute_url }}">{{ user.profile.first_name | default:user.profile }}</a>
+</li>
+{% endblock navbar_links %} {% block content %}
+
+<!--CREATE POST-->
+
+<script>
+    function open_url() {
+        location.href = "{% url 'create_post'  %} ";
+    }
+</script>
+
+<div onclick=open_url()>
+    <div class="create_post_card_wrap">
+        <div class="content">
+            <div class="small_box_create_post">
+                <a href="{{ user.profile.get_absolute_url }}"><img class="avatar" src="{{ user.profile.avatar.url }}" alt="profile picture" /></a>
+                <span class="text"> Write your post.</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Post List-->
+<h1 class="section_title">Community</h1>
+{% if post_list %} {% for post in post_list %}
+<div class="post_card_wrap">
+    <span class="closebtn" onclick="this.parentElement.style.display='none'">&times;</span>
+    <div class="content">
+        <a href="{{ post.author.get_absolute_url }}"><img class="avatar" src="{{ post.author.avatar.url }}" alt="profile picture" /></a>
+
+        <a class="author" href="{{ post.author.get_absolute_url }}">
+            {% if post.author.first_name %}
+                {{ post.author.first_name }}
+                {{ post.author.last_name | default:'' }}
+            {% else %}
+                {{ post.author }}
+            {% endif %}
+            <br><span class="position">{{ post.author.current_position | default:'' }}</span>
+        </a>
+        <hr>
+        <h3 class="title">{{ post.title }}</h3>
+        <h5 class="story">
+            {{ post.story }}
+        </h5>
+    </div>
+    {% if post.picture %}
+    <img class="post_picture" src="{{ post.picture.url }}" /> {% endif %}
+
+    <!--like-->
+    <div class="content">
+
+        <span style="color: gray; text-decoration: none; position: absolute; bottom: 15px;">&#128156; {% if post.postlike_set.all %}<small><small>{{ post.postlike_set.all|length }}</small></small> {% endif %}</span>
+        <a style="color: gray; text-decoration: none; position: absolute; bottom: 15px;" onclick=like(this) href="{{ post.get_absolute_url }}/like/ ">&#128420;</a>
+        <br> {% for like in post.postlike_set.all %} {% if user == like.user %}
+        <span style="color: gray; text-decoration: none; position: absolute; bottom: 15px;">&#128156;</span>
+        <!---->
+        {% endif %} {% endfor %}
+    </div>
+    <script>
+        function like(link) {
+            link.innerHTML = '&#128156;';
+            link.style.zIndex = "-1";
+        }
+    </script>
+
+</div>
+{% endfor %} {% else %}
+<p>There are no posts..</p>
+{% endif %}
+
+<div class="pagination">
+    <br> {% block pagination %} {% if is_paginated %}
+    <div class="pagination">
+        <span class="page-links">
+  {% if page_obj.has_previous %}
+      <a href="{{ request.path }}?page={{ page_obj.previous_page_number }}">previous</a>
+  {% endif %}
+  <span class="page-current">
+      Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+  </span> {% if page_obj.has_next %}
+        <a href="{{ request.path }}?page={{ page_obj.next_page_number }}">next</a> {% endif %}
+        </span>
+    </div>
+    {% endif %} {% endblock pagination %}
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+{% block navbar_links %}
+    <li style="float: right;">
+        <a href="{% url 'book' %}">Home</a>
+    </li>
+{% endblock %}
+{% block content %}
+<div class="form-wrap">
+    <div class="content">
+        <a class="tab" href="{% url 'login' %}">Sign In</a>
+        <a class="tab mark" href="{% url 'sign_up' %}">Sign Up</a>
+        <div class="login-form">
+            <form method="post" action="{% url 'sign_up' %}">
+                <div class="group">
+                    {% csrf_token %} {{ form.username.label_tag }} {{ form.username }} {{ form.email.label_tag }} {{ form.email }} {{ form.password1.label_tag }} {{ form.password1 }}
+                    <li>Your password must contain at least 8 characters.</li>
+                    <li>Your password can’t be entirely numeric.</li>
+                    <br> {{ form.password2.label_tag }} {{ form.password2 }} {{ form.errors }}
+                </div>
+                <div class="group">
+                    <input type="submit" value="Sign up" />
+                </div>
+            </form>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="text" style="position: fixed; left: -10000000px;" disabled/> {% endblock %}

@@ -1,0 +1,39 @@
+footer {
+    margin-top: 10px;
+    padding-top: 40px;
+    background-color: #00181260;
+    text-align: center;
+    color: #001812;
+    font-family: Georgia;
+    font-size: medium;
+}
+
+footer a {
+    color: #001812;
+    text-decoration: none;
+    padding-inline: 3px;
+}
+
+footer a:hover {
+    text-decoration: underline;
+}
+
+footer a img {
+    width: 32px;
+}
+
+footer .credits {
+    background-color: #0a0f0c;
+    padding: 15px;
+    margin-bottom: 0px;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+footer .credits a {
+    color: #00d09d;
+    text-decoration: none;
+}
+
+footer .delimiter {
+    color: #777;
+}

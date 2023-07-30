@@ -1,0 +1,27 @@
+{% if partners %}
+    <div class="horizont_feed" onclick="closeNav()">
+
+        <h3>
+            <a href="{% url 'partners' %}">Partners&nbsp;&&nbsp;Friends</a>
+        </h3>
+
+        <div class="feed">
+
+            {% if partners.has_previous %}
+                <a class="next_btn" href="?page={{ partners.previous_page_number }}">&#8592;</a> 
+            {% endif %} 
+            
+            {% for partner in partners %}
+                <div class="card">
+                    <img src="{{ partner.picture.url }}" />
+                </div>
+            {% endfor %} 
+
+            {% if partners.has_next %}
+                <!--<a class="next_btn" href="?page={{ partners.next_page_number }}">next&nbsp;&#8594;</a> -->
+            {% endif %}
+            <!--Page {{ partners.number }} of {{ partners.paginator.num_pages }}-->
+
+        </div>
+    </div>
+{% endif %}
