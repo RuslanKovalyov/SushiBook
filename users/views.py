@@ -115,7 +115,7 @@ def create_post(request):
             if form.story or form.picture or form.title:
                 form.save()
                 messages.success(request, 'Post created successfully')
-            return redirect(to='/community')
+            return redirect(to='/Community')
     else:
         form = CreatePostForm()
     return render(request, 'users/create_post.html', {'form': form,})
@@ -140,7 +140,7 @@ def renew_post(request, pk):
             # Обработка данных из form.cleaned_data
             #(здесь мы просто присваиваем их полю due_back)
             post_inst.save()
-            #return redirect(to='/community/')
+            #return redirect(to='/Community/')
             return redirect(to=request.user.profile.get_absolute_url())
 
     # Если это GET (или какой-либо ещё), создать форму по умолчанию.
@@ -234,7 +234,7 @@ class PostCommentCreate(LoginRequiredMixin, CreateView):
         """
         next_url = self.request.POST.get('next')
         return next_url+"?"
-        #return '/community/'
+        #return '/Community/'
 
 
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
