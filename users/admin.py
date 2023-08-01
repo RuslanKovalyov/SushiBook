@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
 
-from .models import CustomUser, Profile, Post, PostLike
+from .models import CustomUser, Profile, Post, PostLike, PostComment
 
 
 class CustomUserAdmin(UserAdmin):
@@ -37,3 +37,4 @@ class ProfileAdmin(admin.ModelAdmin):
 
 
 admin.site.register(PostLike)
+admin.site.register(PostComment)
