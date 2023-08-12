@@ -17,6 +17,9 @@
                     <li>Your password can’t be entirely numeric.</li>
                     <br> {{ form.password2.label_tag }} {{ form.password2 }} {{ form.errors }}
                 </div>
+                {% if ENABLE_RECAPTCHA %}
+                    {{ form.captcha }}
+                {% endif %}
                 <div class="group">
                     <input type="submit" value="Sign up" />
                 </div>

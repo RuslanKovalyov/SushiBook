@@ -1,0 +1,30 @@
+{% extends 'base.html' %} 
+{% block navbar_links %}
+    <li style="float: right;">
+        <a href="{% url 'book' %}">Home</a>
+    </li>
+{% endblock %}
+{% block content %}
+<div class="form-wrap">
+    <div class="content">
+        <a class="tab" href="{% url 'login' %}">Sign In</a>
+        <a class="tab mark" href="{% url 'sign_up' %}">Sign Up</a>
+        <div class="login-form">
+            <p> To complete the registration process,
+                we've sent an <big>activation&nbsp;link</big> to your email address.
+                Simply click on the link to activate your account,
+                and then you'll be able to log&nbsp;in
+                and fully experience all of the features and benefits our platform has to offer.
+                <br>
+                Thank you for signing up! 
+            </p>
+            <a class="btn" href="/">Ok</a>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="text" style="position: fixed; left: -10000000px;" disabled/> {% endblock %}
+    

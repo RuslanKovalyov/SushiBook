@@ -1,15 +1,22 @@
 from django.contrib.auth.forms import UserCreationForm
 from django.http import request
 from users.models import CustomUser
+from django import forms
+from captcha.fields import ReCaptchaField
+# from captcha.widgets import ReCaptchaV2Checkbox
+from captcha.widgets import ReCaptchaV2Invisible
+from django.conf import settings
+
+from .models import CustomUser, Post, Profile, PostLike
 
 class RegisterForm(UserCreationForm):
+    captcha = ReCaptchaField(widget=ReCaptchaV2Invisible)
+
     class Meta:
         model = CustomUser
         fields = ['email', 'password1', 'password2']
-
-
-from django import forms
-from .models import CustomUser, Post, Profile, PostLike
+        if settings.ENABLE_RECAPTCHA:
+            fields.append('captcha')
 
 # bootstrap ? attrs={'class': 'form-control'}
 class UpdateCustomUserForm(forms.ModelForm):

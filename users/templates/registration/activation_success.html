@@ -1,0 +1,25 @@
+{% extends 'base.html' %} 
+{% block navbar_links %}
+    <li style="float: right;">
+        <a href="{% url 'book' %}">Home</a>
+    </li>
+{% endblock %}
+{% block content %}
+<div class="form-wrap">
+    <div class="content">
+        <a class="tab" href="{% url 'login' %}">Sign In</a>
+        <a class="tab mark" href="{% url 'sign_up' %}">Sign Up</a>
+        <div class="login-form">
+            
+			<h1>Activation Successful</h1>
+			<p>Great news! Your account has been activated. You can now Log&nbsp;in
+				and start exploring everything our website has to offer.
+			</p>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="text" style="position: fixed; left: -10000000px;" disabled/> {% endblock %}

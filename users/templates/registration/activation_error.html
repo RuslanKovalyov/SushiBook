@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% block navbar_links %}
+    <li style="float: right;">
+        <a href="{% url 'book' %}">Home</a>
+    </li>
+{% endblock %}
+{% block content %}
+<div class="form-wrap">
+    <div class="content">
+        <a class="tab" href="{% url 'login' %}">Sign In</a>
+        <a class="tab mark" href="{% url 'sign_up' %}">Sign Up</a>
+        <div class="login-form">
+            
+			<h1>Activation Error</h1>
+			<p>There was an error with the activation link. Please try again or contact support for assistance.</p>
+            <div class="hr"></div>
+            <div class="foot-lnk">
+                <a href="/">Home</a>
+            </div>
+        </div>
+    </div>
+</div>
+<input type="text" style="position: fixed; left: -10000000px;" disabled/> {% endblock %}

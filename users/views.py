@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.contrib.auth import login, logout, authenticate
 from .forms import RegisterForm
 from django.contrib.auth import login
 
@@ -80,6 +81,37 @@ def password_changed(request):
     return render(request, "registration/password_changed.html")
 
 from .models import Profile, Post, PostLike, PostComment
+
+# mail activation
+from django.contrib.auth.tokens import default_token_generator
+from django.utils.http import urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.template.loader import render_to_string
+from django.core.mail import send_mail
+from django.conf import settings
+from django.utils.encoding import force_str
+from django.utils.http import urlsafe_base64_decode
+from .models import CustomUser, Profile
+def send_activation_email(request, user):
+    token_generator = default_token_generator
+    uid = urlsafe_base64_encode(force_bytes(user.pk))
+    token = token_generator.make_token(user)
+    activation_url = request.build_absolute_uri(
+        f'/activate/{uid}/{token}'
+    )
+    html_message = render_to_string('mail/activation_email.html', {
+        'user': user,
+        'activation_url': activation_url,
+    })
+    send_mail(
+        subject='Activate your account',
+        message=None,
+        html_message=html_message,
+        from_email=settings.DEFAULT_FROM_EMAIL,
+        recipient_list=[user.email],
+        fail_silently=False,
+    )
+
 def sign_up(request):
     form = RegisterForm()
     if request.method == "POST":
@@ -87,11 +119,51 @@ def sign_up(request):
         if form.is_valid():
             user = form.save()
             Profile.objects.create(user=user)
-            login(request,user)
-            return redirect(to=request.user.profile.get_absolute_url())
-    context = {'form':form}
+
+            send_activation_email(request, user)
+            return redirect(to='activation_sent')
+
+            # next is ald version without email activation
+            # login(request,user)
+            # return redirect(to=request.user.profile.get_absolute_url())
+
+    context = { 'form':form,
+                'ENABLE_RECAPTCHA': settings.ENABLE_RECAPTCHA,
+                }
     return render(request, 'registration/sign_up.html', context)
 
+def activation_sent(request):
+    return render(request, 'registration/activation_sent.html')
+
+def activate(request, uidb64, token):
+    try:
+        uid = force_str(urlsafe_base64_decode(uidb64))
+        user = CustomUser.objects.get(pk=uid)
+    except (TypeError, ValueError, OverflowError, CustomUser.DoesNotExist):
+        user = None
+
+    token_generator = default_token_generator
+    if user is not None and token_generator.check_token(user, token):
+        user.is_active = True
+        user.save()
+        messages.success(request, 'Your account has been activated')
+        return redirect('activation_success')
+
+    else:
+        messages.error(request, 'Activation link is invalid or has expired')
+        return redirect('activation_error')
+        # send new link
+
+def activation_success(request):
+    return render(request, 'registration/activation_success.html')
+
+def activation_error(request):
+    return render(request, 'registration/activation_error.html')
+
+def logout_view(request):
+    logout(request)
+    return redirect(to='home')
+    
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 

@@ -44,6 +44,7 @@ class CustomUserManager(BaseUserManager):
 class CustomUser(AbstractUser):
     username = None
     email = models.EmailField(_('email address'), unique=True)
+    is_active = models.BooleanField(default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
@@ -159,6 +160,9 @@ class Profile(models.Model):
                 if self.profile_background != self.default_background:
                     self.profile_background.delete()
         except: pass
+        # delete the CustomUser to
+        self.user.delete()
+        
         #super(Profile, self).delete(*args, **kwargs)
         super().delete(*args, **kwargs)
 

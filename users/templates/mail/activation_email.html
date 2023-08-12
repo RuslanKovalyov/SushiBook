@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	{% comment %} <title>Activate Your Account</title> {% endcomment %}
+	<title>הפעלת החשבון שלך</title>
+
+	<style>
+		sushibook {
+			color: Gray;
+		}
+	</style>
+</head>
+<body>
+	<p>Hi, {{ user.email }}!</p>
+
+	<p>Thanks for registering for our website. To activate your account, please click the following link:</p>
+
+	<p><a href="{{ activation_url }}">{{ activation_url }}</a></p>
+
+	<p>If you did not register for our website, you can safely ignore this email.</p>
+
+
+	<p><span class="sushibook">sushibook.com</p>
+
+</body>
+</html>

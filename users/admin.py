@@ -3,7 +3,7 @@ from django.contrib.auth.admin import UserAdmin
 
 from .models import CustomUser, Profile, Post, PostLike, PostComment
 
-
+@admin.register(CustomUser)
 class CustomUserAdmin(UserAdmin):
     model = CustomUser
     list_display = ('email', 'is_staff', 'is_active',)
@@ -20,8 +20,6 @@ class CustomUserAdmin(UserAdmin):
     )
     search_fields = ('email',)
     ordering = ('email',)
-
-admin.site.register(CustomUser)
 
 #admin.site.register(Profile)
 @admin.register(Profile)
