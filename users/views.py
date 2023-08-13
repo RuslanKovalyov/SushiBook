@@ -1,11 +1,15 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, logout, authenticate
+from django.contrib.auth.forms import SetPasswordForm
+
 from .forms import RegisterForm
 from django.contrib.auth import login
 
 from django.contrib.auth.decorators import login_required
 from .forms import UpdateCustomUserForm, UpdateProfileForm, CreatePostForm, LikePostForm
 from django.contrib import messages
+from django.contrib.auth.views import PasswordResetConfirmView
+
 
 @login_required
 def profile(request):
@@ -80,6 +84,9 @@ def rotate_background(request):
 def password_changed(request):
     return render(request, "registration/password_changed.html")
 
+def password_reset_sent(request):
+    return render(request, "registration/password_reset_sent.html")
+
 from .models import Profile, Post, PostLike, PostComment
 
 # mail activation
@@ -92,6 +99,8 @@ from django.conf import settings
 from django.utils.encoding import force_str
 from django.utils.http import urlsafe_base64_decode
 from .models import CustomUser, Profile
+from django.urls import reverse_lazy
+
 def send_activation_email(request, user):
     token_generator = default_token_generator
     uid = urlsafe_base64_encode(force_bytes(user.pk))
@@ -163,7 +172,14 @@ def activation_error(request):
 def logout_view(request):
     logout(request)
     return redirect(to='home')
-    
+
+def passwordReset_Done(request):
+    return render(request, 'registration/pass_reset_done.html')
+
+class PasswordResetConfirm(PasswordResetConfirmView):
+    form_class = SetPasswordForm
+    success_url = reverse_lazy('password_reset_done')
+
 from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin
 

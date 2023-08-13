@@ -22,8 +22,22 @@ urlpatterns = [
             template_name='registration/password_change.html',
             success_url='password_changed'
         ),name='password_change'),
-    path('password_changed/', views.password_changed, name='password_changed'),
+    path('password_change/password_changed/', views.password_changed, name='password_changed'),
     path('sign_up/',views.sign_up, name="sign_up"),
+
+
+
+    path('password_reset/', auth_views.PasswordResetView.as_view(
+            template_name='registration/password_reset_by_mail.html',
+            email_template_name='mail/password_reset_email.html',
+            subject_template_name='mail/password_reset_subject.txt',
+            success_url='sent/'
+        ),name='password_reset'),
+    path('password_reset/sent/', views.password_reset_sent, name='password_reset_sent'),
+
+    path('reset/<uidb64>/<token>/', views.PasswordResetConfirm.as_view(template_name='registration/pass_reset_confirm.html'), name="password_reset_confirm"),
+    path('password_reset/done/', views.passwordReset_Done, name="password_reset_done"),
+
 
     path('activation_sent/', views.activation_sent, name="activation_sent"),
     # path('reactivate/<str:email>/', views.reactivate_user, name='reactivate_user'),
