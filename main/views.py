@@ -113,7 +113,7 @@ class job():
         return render(request, 'main/job.html', { 'job':objs })
 
 class insider():
-    @login_required
+    # @login_required
     def all(request):
         objs = SushiRoll.objects.order_by('-id')
         return render(request, 'main/insider.html', { 'insider':objs })
