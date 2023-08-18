@@ -6,13 +6,13 @@ from users.models import Profile
 from .models import Section, Page, RecipeDetails
 from django.shortcuts import get_object_or_404
 
-from django.conf import settings #cache
+# from django.conf import settings #cache
 from django.core.cache.backends.base import DEFAULT_TIMEOUT #cache
 from django.views.decorators.cache import cache_page #cache
 
-CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT) #cache
+# CACHE_TTL = getattr(settings, 'CACHE_TTL', DEFAULT_TIMEOUT) #cache
 
-@cache_page(CACHE_TTL) #cache
+# @cache_page(CACHE_TTL) #cache
 def book(request, name='About'):
     s = Section.objects.order_by('name')
     ps = Page.objects.order_by('name')
